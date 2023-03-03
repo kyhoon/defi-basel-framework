@@ -1,6 +1,6 @@
 """get yearn addresses"""
-import os
 import json
+import os
 
 import requests
 

@@ -6,12 +6,12 @@ import pandas as pd
 import requests
 
 DATA_DIR = "../data"
-BATCH_SIZE = 20
+BATCH_SIZE = 30
 
 # get token addresses
 tokens = set({})
-for filename in os.listdir(DATA_DIR):
-    df = pd.read_csv(os.path.join(DATA_DIR, filename), index_col=0)
+for filename in os.listdir(os.path.join(DATA_DIR, "transfers")):
+    df = pd.read_csv(os.path.join(DATA_DIR, "transfers", filename), index_col=0)
     if len(df) == 0:
         continue
     tokens.update(df.address)
@@ -44,16 +44,16 @@ for idx in range(0, len(tokens_llama), BATCH_SIZE):
             if (len(value) > 0 and key.startswith("0x"))
         ]
     )
-    time.sleep(2)
+    time.sleep(3)
 
 # security tokens
 security_tokens = set(tokens_gecko)
 for token in security_tokens:
-    df = pd.DataFrame(columns=["blockNumber", "price"])
+    df = pd.DataFrame(columns=["block_number", "symbol", "decimals", "price"])
     df.to_csv(os.path.join(DATA_DIR, "tokens", "security", token + ".csv"))
 
 # utility tokens
 utility_tokens = set(tokens_llama).difference(security_tokens)
 for token in utility_tokens:
-    df = pd.DataFrame(columns=["blockNumber", "price"])
+    df = pd.DataFrame(columns=["block_number", "symbol", "decimals", "price"])
     df.to_csv(os.path.join(DATA_DIR, "tokens", "utility", token + ".csv"))
