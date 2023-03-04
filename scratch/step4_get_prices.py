@@ -1,6 +1,7 @@
 import contextlib
 import os
 import time
+from random import randrange
 
 import joblib
 import pandas as pd
@@ -68,10 +69,16 @@ def fetch_prices(block_number, tokens):
 
     retry = True
     while retry:
-        res = requests.get(url + f"{timestamp}/{token_string}")
+        try:
+            res = requests.get(url + f"{timestamp}/{token_string}")
+        except:
+            time.sleep(randrange(3, 10))
+            continue
+
         if res.status_code == 200:
             retry = False
-        time.sleep(1)
+        else:
+            time.sleep(randrange(3, 10))
     coins = res.json()["coins"]
 
     # save in csv

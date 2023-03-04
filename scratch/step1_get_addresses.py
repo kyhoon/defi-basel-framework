@@ -17,7 +17,7 @@ strategies = [strat["address"] for strat in res.json()]
 addresses = vaults + strategies
 addresses = list(set(addresses))
 addresses = {
-    "treasury": "0xfeb4acf3df3cdea7399794d0869ef76a6efaff52",
+    "treasury": "0xFEB4acf3df3cDEA7399794D0869ef76A6EfAff52",
     "addresses": addresses,
 }
 

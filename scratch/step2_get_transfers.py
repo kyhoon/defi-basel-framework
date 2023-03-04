@@ -152,7 +152,7 @@ def fetch_transfers(address, from_block=0, to_block="latest"):
                 continue
 
     transfers = pd.DataFrame(events)
-    transfers.to_csv(os.path.join(DATA_DIR, address) + ".csv")
+    transfers.to_csv(os.path.join(DATA_DIR, "transfers", address + ".csv"))
 
 
 @contextlib.contextmanager
@@ -180,7 +180,7 @@ if __name__ == "__main__":
     targets = [addresses["treasury"]] + addresses["addresses"]
 
     # parallel
-    jobs = [delayed(fetch_transfers)(target, 0, 16744589) for target in targets]
+    jobs = [delayed(fetch_transfers)(target, 0, 16751554) for target in targets]
     pool = Parallel(backend="threading", n_jobs=16)
 
     with tqdm_joblib(tqdm(total=len(jobs))) as pbar:
