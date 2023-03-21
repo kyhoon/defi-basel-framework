@@ -1,15 +1,16 @@
 """fetch erc20 transfers from/to the addresses"""
-import contextlib
 import itertools
 import json
 import os
 
-import joblib
-import pandas as pd
+from dotenv import load_dotenv
 from eth_utils import to_bytes
 from hexbytes import HexBytes
 from joblib import Parallel, delayed
+from models import Contract, Transfer, commit
+from pony import orm
 from tqdm import tqdm
+from utils import tqdm_joblib
 from web3 import Web3
 from web3._utils.abi import (
     exclude_indexed_event_inputs,
@@ -24,9 +25,10 @@ from web3._utils.filters import construct_event_filter_params
 from web3._utils.normalizers import BASE_RETURN_NORMALIZERS
 from web3.types import ABIEvent
 
-DATA_DIR = "../data"
-BLOCK_SIZE = 100000
-web3 = Web3(Web3.HTTPProvider("http://localhost:8547"))
+load_dotenv()
+
+BLOCK_SIZE = 10000
+web3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER")))
 
 ABI = """[
     {
@@ -151,36 +153,28 @@ def fetch_transfers(address, from_block=0, to_block="latest"):
             except:
                 continue
 
-    transfers = pd.DataFrame(events)
-    transfers.to_csv(os.path.join(DATA_DIR, "transfers", address + ".csv"))
-
-
-@contextlib.contextmanager
-def tqdm_joblib(tqdm_object):
-    """Context manager to patch joblib to report into tqdm progress bar given as argument"""
-
-    class TqdmBatchCompletionCallback(joblib.parallel.BatchCompletionCallBack):
-        def __call__(self, *args, **kwargs):
-            tqdm_object.update(n=self.batch_size)
-            return super().__call__(*args, **kwargs)
-
-    old_batch_callback = joblib.parallel.BatchCompletionCallBack
-    joblib.parallel.BatchCompletionCallBack = TqdmBatchCompletionCallback
-    try:
-        yield tqdm_object
-    finally:
-        joblib.parallel.BatchCompletionCallBack = old_batch_callback
-        tqdm_object.close()
+    with orm.db_session:
+        for event in events:
+            Transfer(
+                block_number=event["blockNumber"],
+                block_hash=event["blockHash"].hex(),
+                tx_hash=event["transactionHash"].hex(),
+                log_index=event["logIndex"],
+                token=event["address"],
+                from_address=event["from"],
+                to_address=event["to"],
+                value=str(event["value"]),
+            )
+            commit()
 
 
 if __name__ == "__main__":
     # read addresses
-    with open(os.path.join(DATA_DIR, "addresses.json"), "r") as f:
-        addresses = json.load(f)
-    targets = [addresses["treasury"]] + addresses["addresses"]
+    with orm.db_session:
+        targets = list(orm.select(c.address for c in Contract))
 
     # parallel
-    jobs = [delayed(fetch_transfers)(target, 0, 16751554) for target in targets]
+    jobs = [delayed(fetch_transfers)(target, 0, "latest") for target in targets]
     pool = Parallel(backend="threading", n_jobs=16)
 
     with tqdm_joblib(tqdm(total=len(jobs))) as pbar:

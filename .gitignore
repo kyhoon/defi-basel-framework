@@ -1,1 +1,6 @@
+.vscode/
+.hypothesis/
+__pycache__/
+
+.env
 data/
