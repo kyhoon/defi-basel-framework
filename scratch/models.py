@@ -61,5 +61,5 @@ db.generate_mapping(create_tables=True)
 def commit():
     try:
         db.commit()
-    except (orm.core.TransactionIntegrityError, orm.core.CacheIndexError):
+    except orm.core.TransactionIntegrityError:
         db.rollback()

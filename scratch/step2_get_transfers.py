@@ -155,17 +155,20 @@ def fetch_transfers(address, from_block=0, to_block="latest"):
 
     with orm.db_session:
         for event in events:
-            Transfer(
-                block_number=event["blockNumber"],
-                block_hash=event["blockHash"].hex(),
-                tx_hash=event["transactionHash"].hex(),
-                log_index=event["logIndex"],
-                token=event["address"],
-                from_address=event["from"],
-                to_address=event["to"],
-                value=str(event["value"]),
-            )
-            commit()
+            try:
+                Transfer(
+                    block_number=event["blockNumber"],
+                    block_hash=event["blockHash"].hex(),
+                    tx_hash=event["transactionHash"].hex(),
+                    log_index=event["logIndex"],
+                    token=event["address"],
+                    from_address=event["from"],
+                    to_address=event["to"],
+                    value=str(event["value"]),
+                )
+                commit()
+            except orm.core.CacheIndexError:
+                continue
 
 
 if __name__ == "__main__":
