@@ -1,0 +1,29 @@
+{
+  "rating": "AAA",
+  "treasury": [
+    "0x99f4176ee457afedffcb1839c7ab7a030a5e4a92"
+  ],
+  "addresses": [
+    "0xdcb6a51ea3ca5d3fd898fd6564757c7aaec3ca92",
+    "0x5c8344bcdc38f1ab5eb5c1d4a35ddeea522b5dfa",
+    "0x5fd79d46eba7f351fe49bff9e87cdea6c821ef9f",
+    "0x02f9bc46bed33acdb9cb002fe346734cef8a9480",
+    "0xc1aae9d18bbe386b102435a8632c8063d31e747c",
+    "0x46abfe1c972fca43766d6ad70e1c1df72f4bb4d1",
+    "0xe1f64079ada6ef07b03982ca34f1dd7152aa3b86",
+    "0x99f4176ee457afedffcb1839c7ab7a030a5e4a92",
+    "0x48d7f315fedcad332f68aafa017c7c158bc54760",
+    "0xe533139af961c9747356d947838c98451015e234",
+    "0x13c1542a468319688b89e323fe9a3be3a90ebb27",
+    "0xda4ef8520b1a57d7d63f1e249606d1a459698876",
+    "0x5e74c9036fb86bd7ecdcb084a0673efc32ea31cb",
+    "0xfeefeefeefeefeefeefeefeefeefeefeefeefeef",
+    "0xeb9a82736cc030fc4a4cd4b53e9b2c67e153208d",
+    "0xac1ed4fabbd5204e02950d68b6fc8c446ac95362",
+    "0x42456d7084eacf4083f1140d3229471bba2949a8",
+    "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f",
+    "0x29c295b046a73cde593f21f63091b072d407e3f2",
+    "0xeb3107117fead7de89cd14d463d340a2e6917769",
+    "0x57ab1ec28d129707052df4df418d58a2d46d5f51"
+  ]
+}
