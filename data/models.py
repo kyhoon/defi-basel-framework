@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Integer, ForeignKey, ARRAY
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import relationship
 from data.base import Base
 
 
@@ -44,3 +44,10 @@ class Transfer(Base):
     from_address = Column(String)
     to_address = Column(String)
     value = Column(String)
+
+
+class Contract(Base):
+    __tablename__ = "contracts"
+
+    id = Column(String, primary_key=True)
+    last_block = Column(Integer)

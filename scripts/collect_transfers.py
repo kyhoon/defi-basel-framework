@@ -27,7 +27,7 @@ from web3._utils.normalizers import BASE_RETURN_NORMALIZERS
 from web3.types import ABIEvent
 
 from data.base import Session
-from data.models import Protocol, Transfer
+from data.models import Protocol, Transfer, Contract
 
 # logger
 logger = logging.getLogger(__file__)
@@ -144,7 +144,19 @@ def parse_event(abi_codec, event_abi, log_entry):
     return event_data
 
 
-def fetch_transfers(address, from_block, to_block):
+def fetch_transfers(address, to_block):
+    # get last block
+    session = Session()
+    contract = session.get(Contract, address)
+    if contract is None:
+        contract = Contract(id=address, last_block=0)
+        session.add(contract)
+        session.commit()
+        from_block = 0
+    else:
+        from_block = contract.last_block
+    session.close()
+
     event = ERC20.events.Transfer
     event_abi = event._get_event_abi()
     event_abi_codec = event.web3.codec
@@ -218,6 +230,13 @@ def fetch_transfers(address, from_block, to_block):
             except IntegrityError:
                 session.rollback()
                 continue
+
+        # update last block
+        contract = session.get(Contract, address)
+        contract.last_block = _to_block
+        session.add(contract)
+        session.commit()
+
         session.close()
 
 
@@ -236,7 +255,7 @@ def run():
 
     # parallel
     pool = Parallel(backend="threading", n_jobs=N_JOBS)
-    jobs = [delayed(fetch_transfers)(address, 0, latest_block) for address in addresses]
+    jobs = [delayed(fetch_transfers)(address, latest_block) for address in addresses]
     logger.info(f"using {N_JOBS} processes")
 
     with tqdm_joblib(tqdm(total=len(jobs))) as pbar:
