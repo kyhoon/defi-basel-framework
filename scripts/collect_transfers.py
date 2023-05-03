@@ -41,7 +41,7 @@ logger.addHandler(sh)
 
 # config
 BLOCK_SIZE = 10000
-N_JOBS = 16
+N_JOBS = 32
 
 load_dotenv()
 web3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER")))
@@ -254,7 +254,7 @@ def run():
     logger.info(f"collecting transfers until block {latest_block}")
 
     # parallel
-    pool = Parallel(backend="threading", n_jobs=N_JOBS)
+    pool = Parallel(backend="loky", n_jobs=N_JOBS)
     jobs = [delayed(fetch_transfers)(address, latest_block) for address in addresses]
     logger.info(f"using {N_JOBS} processes")
 

@@ -15,7 +15,7 @@ port = 5432
 database = os.getenv("DB_DATABASE")
 
 conn_str = f"postgresql://{username}:{password}@{host}:{port}/{database}"
-engine = create_engine(conn_str)
+engine = create_engine(conn_str, pool_size=0)
 Session = sessionmaker(bind=engine)
 
 Base = declarative_base()
