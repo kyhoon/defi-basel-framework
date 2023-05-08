@@ -1,11 +1,15 @@
+import time
+import pickle
+import gzip
+import gc
 import logging
 import contextlib
 import itertools
 import json
 import os
+import hashlib
 
-from sqlalchemy.exc import IntegrityError
-from sqlalchemy.dialects.postgresql import insert
+import requests
 from dotenv import load_dotenv
 from eth_utils import to_bytes
 from hexbytes import HexBytes
@@ -44,7 +48,9 @@ BLOCK_SIZE = 10000
 N_JOBS = 32
 
 load_dotenv()
-web3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER")))
+web3 = Web3(
+    Web3.HTTPProvider(os.getenv("WEB3_PROVIDER"), request_kwargs={"timeout": 60})
+)
 
 # minimal ABI for ERC20 transfer event
 ABI = """[
@@ -144,17 +150,11 @@ def parse_event(abi_codec, event_abi, log_entry):
     return event_data
 
 
-def fetch_transfers(address, to_block):
-    # get last block
+def fetch_transfers(address, to_block, path):
+    # get from block
     session = Session()
     contract = session.get(Contract, address)
-    if contract is None:
-        contract = Contract(id=address, last_block=0)
-        session.add(contract)
-        session.commit()
-        from_block = 0
-    else:
-        from_block = contract.last_block
+    from_block = contract.from_block
     session.close()
 
     event = ERC20.events.Transfer
@@ -174,12 +174,17 @@ def fetch_transfers(address, to_block):
             fromBlock=_from_block,
             toBlock=_to_block,
         )
+
+        patience = 1
         while True:
             try:
                 logs = event.web3.eth.get_logs(event_filter_params)
                 break
-            except:
+            except Exception as e:
+                time.sleep(patience)
+                patience *= 2
                 continue
+
         for entry in logs:
             try:
                 _events.append(parse_event(event_abi_codec, event_abi, entry))
@@ -194,69 +199,116 @@ def fetch_transfers(address, to_block):
             fromBlock=_from_block,
             toBlock=_to_block,
         )
+
+        patience = 1
         while True:
             try:
                 logs = event.web3.eth.get_logs(event_filter_params)
                 break
-            except:
+            except Exception as e:
+                time.sleep(patience)
+                patience *= 2
                 continue
+
         for entry in logs:
             try:
                 _events.append(parse_event(event_abi_codec, event_abi, entry))
             except:
                 continue
 
-        session = Session()
-        for _event in _events:
-            statement = (
-                insert(Transfer)
-                .values(
-                    block_hash=_event["blockHash"].hex(),
-                    tx_hash=_event["transactionHash"].hex(),
-                    log_index=_event["logIndex"],
-                    block_number=_event["blockNumber"],
-                    token_id=_event["address"],
-                    from_address=_event["from"],
-                    to_address=_event["to"],
-                    value=str(_event["value"]),
-                )
-                .on_conflict_do_nothing(
-                    index_elements=["block_hash", "tx_hash", "log_index"]
-                )
-            )
-            try:
-                session.execute(statement)
-                session.commit()
-            except IntegrityError:
-                session.rollback()
-                continue
+        # dump files to path as pickle
+        slug = address + str(time.time())
+        slug_hash = hashlib.md5(slug.encode("utf-8")).hexdigest()
+        filepath = os.path.join(path, slug_hash + ".pkl")
+        gc.disable()
+        try:
+            gc.collect()
+            with gzip.open(filepath, "wb") as f:
+                pickle.dump(_events, f)
+        finally:
+            gc.enable()
 
         # update last block
+        session = Session()
         contract = session.get(Contract, address)
-        contract.last_block = _to_block
+        contract.from_block = _to_block
         session.add(contract)
         session.commit()
-
         session.close()
 
 
-def run():
+def dump_files(path):
+    latest_block = web3.eth.get_block("latest")["number"]
+    logger.info(f"collecting transfers until block {latest_block}")
+
     session = Session()
     addresses = set({})
     for protocol in session.query(Protocol).all():
         addresses.update(protocol.treasury)
         addresses.update(protocol.addresses)
+    addresses = set(address.lower() for address in addresses)
+    session.close()
+    logger.info(f"found {len(addresses)} addresses in database")
+
+    logger.info(f"populating contracts in database")
+    session = Session()
+    new_contracts = []
+    for address in tqdm(addresses):
+        contract = session.get(Contract, address)
+        if contract is None:
+            contract = Contract(id=address)
+            session.add(contract)
+            session.commit()
+        if contract.from_block is None:
+            new_contracts.append(address)
+    session.close()
+    logger.info(f"collecting creation blocks for {len(new_contracts)} addresses")
+
+    url = "https://api.etherscan.io/api"
+    params = {
+        "module": "contract",
+        "action": "getcontractcreation",
+        "apikey": os.getenv("ETHERSCAN_TOKEN"),
+    }
+    session = Session()
+    for idx in tqdm(range(0, len(new_contracts), 5)):
+        _addresses = new_contracts[idx : idx + 5]
+        params["contractaddresses"] = ",".join(_addresses)
+        while True:
+            res = requests.get(url, params=params)
+            if res.status_code == 200:
+                break
+            time.sleep(1)
+
+        results = res.json()["result"]
+        if results is not None:
+            for result in results:
+                address = result["contractAddress"].lower()
+                _addresses.remove(address)
+
+                tx_hash = result["txHash"]
+                creation_block = web3.eth.get_transaction(tx_hash)["blockNumber"]
+
+                contract = session.get(Contract, address)
+                contract.from_block = creation_block
+                session.commit()
+
+        addresses -= set(_addresses)
+
     session.close()
 
-    logger.info(f"collecting transfers from {len(addresses)} addresses")
-
-    latest_block = web3.eth.get_block("latest")["number"]
-    logger.info(f"collecting transfers until block {latest_block}")
+    logger.info(f"collecting transfers for {len(addresses)} addresses to {path}")
 
     # parallel
     pool = Parallel(backend="loky", n_jobs=N_JOBS)
-    jobs = [delayed(fetch_transfers)(address, latest_block) for address in addresses]
+    jobs = [
+        delayed(fetch_transfers)(address, latest_block, path) for address in addresses
+    ]
     logger.info(f"using {N_JOBS} processes")
 
     with tqdm_joblib(tqdm(total=len(jobs))) as pbar:
         result = pool(jobs)
+
+
+def run(path):
+    dump_files(path)

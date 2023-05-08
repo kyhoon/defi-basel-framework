@@ -50,4 +50,4 @@ class Contract(Base):
     __tablename__ = "contracts"
 
     id = Column(String, primary_key=True)
-    last_block = Column(Integer)
+    from_block = Column(Integer, nullable=True)

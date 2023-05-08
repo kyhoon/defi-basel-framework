@@ -28,7 +28,7 @@ def run():
         with open(f"data/protocols/{filename}") as f:
             data = json.load(f)
 
-        statement = (
+        stmt = (
             insert(Protocol)
             .values(
                 id=filename.split(".")[0],
@@ -36,9 +36,16 @@ def run():
                 treasury=data["treasury"],
                 addresses=data["addresses"],
             )
-            .on_conflict_do_nothing(index_elements=["id"])
+            .on_conflict_do_update(
+                index_elements=["id"],
+                set_={
+                    "rating": data["rating"],
+                    "treasury": data["treasury"],
+                    "addresses": data["addresses"],
+                },
+            )
         )
-        session.execute(statement)
+        session.execute(stmt)
         session.commit()
 
     # populate tokens
@@ -47,7 +54,7 @@ def run():
         with open(f"data/tokens/{filename}") as f:
             data = json.load(f)
 
-        statement = (
+        stmt = (
             insert(Token)
             .values(
                 id=filename.split(".")[0],
@@ -56,9 +63,17 @@ def run():
                 itin=data["itin"],
                 decimals=data["decimals"],
             )
-            .on_conflict_do_nothing(index_elements=["id"])
+            .on_conflict_do_update(
+                index_elements=["id"],
+                set_={
+                    "protocol_id": data["protocol"],
+                    "symbol": data["symbol"],
+                    "itin": data["itin"],
+                    "decimals": data["decimals"],
+                },
+            )
         )
-        session.execute(statement)
+        session.execute(stmt)
         session.commit()
 
     session.close()
