@@ -8,11 +8,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-username = os.getenv("DB_USER")
-password = os.getenv("DB_PASSWORD")
-host = os.getenv("DB_HOST")
-port = 5432
-database = os.getenv("DB_DATABASE")
+username = os.getenv("POSTGRES_USER")
+password = os.getenv("POSTGRES_PASSWORD")
+host = os.getenv("POSTGRES_HOST")
+port = os.getenv("POSTGRES_PORT")
+database = os.getenv("POSTGRES_DB")
 
 conn_str = f"postgresql://{username}:{password}@{host}:{port}/{database}"
 engine = create_engine(

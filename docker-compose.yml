@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    ports:
+      - ${POSTGRES_PORT}:5432
+    volumes:
+      - ${PGDATA}:/var/lib/postgresql/data
