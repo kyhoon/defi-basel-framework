@@ -33,15 +33,15 @@ def run():
             .values(
                 id=filename.split(".")[0],
                 rating=data["rating"],
-                treasury=data["treasury"],
-                addresses=data["addresses"],
+                treasury=[address.lower() for address in data["treasury"]],
+                addresses=[address.lower() for address in data["addresses"]],
             )
             .on_conflict_do_update(
                 index_elements=["id"],
                 set_={
                     "rating": data["rating"],
-                    "treasury": data["treasury"],
-                    "addresses": data["addresses"],
+                    "treasury": [address.lower() for address in data["treasury"]],
+                    "addresses": [address.lower() for address in data["addresses"]],
                 },
             )
         )
@@ -57,7 +57,7 @@ def run():
         stmt = (
             insert(Token)
             .values(
-                id=filename.split(".")[0],
+                id=filename.split(".")[0].lower(),
                 protocol_id=data["protocol"],
                 symbol=data["symbol"],
                 itin=data["itin"],

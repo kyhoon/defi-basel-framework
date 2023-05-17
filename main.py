@@ -19,15 +19,12 @@ def init_db():
 
 
 @cli.command()
-@click.argument("path", type=click.Path(exists=True))
-def collect_transfers(path):
-    """Temporarily dumps the ERC20 transfer data in PATH,
-    then registers the data in the PostgreSQL database.
-    """
+def collect_transfers():
+    """Collects ERC20 transfer data from the Etherscan API."""
 
-    click.echo("Collecting ERC20 transfers")
+    click.echo("Collecting ERC20 transfers from Etherscan")
 
-    scripts.collect_transfers.run(path=path)
+    scripts.collect_transfers.run()
 
     click.echo("Collecting ERC20 transfers complete")
 
