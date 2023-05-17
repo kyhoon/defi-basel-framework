@@ -19,23 +19,6 @@ def init_db():
 
 
 @cli.command()
-def clear_transfers():
-    """drops the contracts and transfers in the PostgreSQL database."""
-
-    click.echo("Dropping contracts and transfers from database")
-
-    from data.base import Session
-    from data.models import Contract, Transfer
-
-    with Session() as session:
-        session.query(Contract).delete()
-        session.query(Transfer).delete()
-        session.commit()
-
-    click.echo("Dropping tables complete")
-
-
-@cli.command()
 @click.argument("path", type=click.Path(exists=True))
 def collect_transfers(path):
     """Temporarily dumps the ERC20 transfer data in PATH,

@@ -35,12 +35,12 @@ class Price(Base):
 class Transfer(Base):
     __tablename__ = "transfers"
 
-    block_hash = Column(String, primary_key=True)
-    tx_hash = Column(String, primary_key=True)
-    log_index = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
+    block_hash = Column(String)
+    tx_hash = Column(String)
+    log_index = Column(Integer)
     block_number = Column(Integer)
-    token_id = Column(String, ForeignKey("tokens.id"))
-    token = relationship("Token")
+    token = Column(String)
     from_address = Column(String)
     to_address = Column(String)
     value = Column(String)

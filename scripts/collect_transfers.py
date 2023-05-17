@@ -10,6 +10,7 @@ import os
 import hashlib
 
 import requests
+from sqlalchemy.dialects.postgresql import insert
 from dotenv import load_dotenv
 from eth_utils import to_bytes
 from hexbytes import HexBytes
@@ -31,7 +32,7 @@ from web3._utils.normalizers import BASE_RETURN_NORMALIZERS
 from web3.types import ABIEvent
 
 from data.base import Session
-from data.models import Protocol, Transfer, Contract
+from data.models import Protocol, Transfer, Contract, Token
 
 # logger
 logger = logging.getLogger(__file__)
@@ -45,7 +46,7 @@ logger.addHandler(sh)
 
 # config
 BLOCK_SIZE = 10000
-N_JOBS = 32
+N_JOBS = 50
 
 load_dotenv()
 web3 = Web3(
@@ -138,30 +139,33 @@ def parse_event(abi_codec, event_abi, log_entry):
         )
     )
     event_data = {
-        "event": event_abi["name"],
-        "logIndex": log_entry["logIndex"],
-        "transactionIndex": log_entry["transactionIndex"],
-        "transactionHash": log_entry["transactionHash"],
-        "address": log_entry["address"],
-        "blockHash": log_entry["blockHash"],
-        "blockNumber": log_entry["blockNumber"],
-        **event_args,
+        "block_hash": log_entry["blockHash"].hex(),
+        "tx_hash": log_entry["transactionHash"].hex(),
+        "log_index": log_entry["logIndex"],
+        "block_number": log_entry["blockNumber"],
+        "token_id": log_entry["address"],
+        "from_address": event_args["from"],
+        "to_address": event_args["to"],
+        "value": str(event_args["value"]),
     }
     return event_data
 
 
 def fetch_transfers(address, to_block, path):
+    st0 = time.time()
+
     # get from block
     session = Session()
     contract = session.get(Contract, address)
     from_block = contract.from_block
-    session.close()
 
     event = ERC20.events.Transfer
     event_abi = event._get_event_abi()
     event_abi_codec = event.web3.codec
 
     for _from_block in range(from_block, to_block, BLOCK_SIZE):
+        st1 = time.time()
+
         _to_block = min(to_block, _from_block + BLOCK_SIZE)
 
         _events = []
@@ -175,20 +179,28 @@ def fetch_transfers(address, to_block, path):
             toBlock=_to_block,
         )
 
+        st2 = time.time()
+
         patience = 1
         while True:
             try:
                 logs = event.web3.eth.get_logs(event_filter_params)
                 break
             except Exception as e:
+                print(e)
                 time.sleep(patience)
                 patience *= 2
                 continue
 
         for entry in logs:
             try:
-                _events.append(parse_event(event_abi_codec, event_abi, entry))
-            except:
+                log = parse_event(event_abi_codec, event_abi, entry)
+                token = session.get(Token, log["token_id"])
+                if token is None:
+                    continue
+                _events.append(log)
+            except Exception as e:
+                print(e)
                 continue
 
         # to address
@@ -206,41 +218,48 @@ def fetch_transfers(address, to_block, path):
                 logs = event.web3.eth.get_logs(event_filter_params)
                 break
             except Exception as e:
+                print(e)
                 time.sleep(patience)
                 patience *= 2
                 continue
 
         for entry in logs:
             try:
-                _events.append(parse_event(event_abi_codec, event_abi, entry))
-            except:
+                log = parse_event(event_abi_codec, event_abi, entry)
+                token = session.get(Token, log["token_id"])
+                if token is None:
+                    continue
+                _events.append(log)
+            except Exception as e:
+                print(e)
                 continue
 
-        # dump files to path as pickle
-        slug = address + str(time.time())
-        slug_hash = hashlib.md5(slug.encode("utf-8")).hexdigest()
-        filepath = os.path.join(path, slug_hash + ".pkl")
-        gc.disable()
-        try:
-            gc.collect()
-            with gzip.open(filepath, "wb") as f:
-                pickle.dump(_events, f)
-        finally:
-            gc.enable()
+        print(f"time for get_logs: {time.time() - st2}")
+
+        if len(_events) > 0:
+            st3 = time.time()
+            stmt = insert(Transfer).values(_events)
+            try:
+                session.execute(stmt)
+                session.commit()
+            except Exception as e:
+                print(e)
+                session.rollback()
+            print(f"time for sql stmt: {time.time() - st3}")
 
         # update last block
-        session = Session()
         contract = session.get(Contract, address)
         contract.from_block = _to_block
         session.add(contract)
         session.commit()
-        session.close()
+
+        print(f"time for block: {time.time() - st1}")
+
+    session.close()
+    print(f"time for address: {time.time() - st0}")
 
 
-def dump_files(path):
-    latest_block = web3.eth.get_block("latest")["number"]
-    logger.info(f"collecting transfers until block {latest_block}")
-
+def create_contracts():
     session = Session()
     addresses = set({})
     for protocol in session.query(Protocol).all():
@@ -296,8 +315,14 @@ def dump_files(path):
         addresses -= set(_addresses)
 
     session.close()
+    return addresses
 
+
+def dump_files(addresses, path):
     logger.info(f"collecting transfers for {len(addresses)} addresses to {path}")
+
+    latest_block = web3.eth.get_block("latest")["number"]
+    logger.info(f"collecting transfers until block {latest_block}")
 
     # parallel
     pool = Parallel(backend="loky", n_jobs=N_JOBS)
@@ -308,7 +333,66 @@ def dump_files(path):
 
     with tqdm_joblib(tqdm(total=len(jobs))) as pbar:
         result = pool(jobs)
+    # [fetch_transfers(address, latest_block, path) for address in tqdm(addresses)]
+
+
+def save_transfers(filepath):
+    if not filepath.endswith(".pkl"):
+        return
+
+    with gzip.open(filepath, "rb") as f:
+        data = pickle.load(f)
+    if len(data) == 0:
+        return
+
+    session = Session()
+    txs = []
+    for tx in data:
+        token = session.get(Token, tx["address"])
+        if token is None:
+            continue
+        txs.append(
+            {
+                "block_hash": tx["blockHash"].hex(),
+                "tx_hash": tx["transactionHash"].hex(),
+                "log_index": tx["logIndex"],
+                "block_number": tx["blockNumber"],
+                "token_id": tx["address"],
+                "from_address": tx["from"],
+                "to_address": tx["to"],
+                "value": str(tx["value"]),
+            }
+        )
+    if len(txs) == 0:
+        return
+
+    stmt = (
+        insert(Transfer)
+        .values(txs)
+        .on_conflict_do_nothing(index_elements=["block_hash", "tx_hash", "log_index"])
+    )
+    session.execute(stmt)
+    session.commit()
+    session.close()
+
+
+def migrate(path):
+    logger.info(f"saving transfers in database from {path}")
+
+    # parallel
+    pool = Parallel(backend="loky", n_jobs=N_JOBS)
+    jobs = [
+        delayed(save_transfers)(os.path.join(path, filename))
+        for filename in os.listdir(path)
+    ]
+    logger.info(f"using {N_JOBS} processes")
+
+    with tqdm_joblib(tqdm(total=len(jobs))) as pbar:
+        result = pool(jobs)
+    # [save_transfers(os.path.join(path, filename)) for filename in os.listdir(path)]
 
 
 def run(path):
-    dump_files(path)
+    addresses = create_contracts()
+    dump_files(addresses, path)
+    # migrate(path)
