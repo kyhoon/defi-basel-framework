@@ -1,5 +1,6 @@
-from sqlalchemy import Column, String, Integer, ForeignKey, ARRAY
+from sqlalchemy import ARRAY, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
+
 from data.base import Base
 
 
@@ -29,6 +30,7 @@ class Price(Base):
 
     block_number = Column(Integer, primary_key=True)
     token_id = Column(String, ForeignKey("tokens.id"), primary_key=True)
+    timestamp = Column(Integer)
     usd_value = Column(String)
 
 

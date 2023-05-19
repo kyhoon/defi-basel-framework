@@ -1,17 +1,20 @@
-import time
-import os
 import logging
-from dotenv import load_dotenv
+import os
+import time
+from joblib import Parallel, delayed
+
 import requests
-from tqdm import tqdm
+from dotenv import load_dotenv
 from sqlalchemy.dialects.postgresql import insert
+from tqdm import tqdm
 
 from data.base import Session
-from data.models import Protocol, Transfer, Token
+from data.models import Protocol, Token, Transfer
+from scripts.utils import tqdm_joblib
 
 # logger
 logger = logging.getLogger(__file__)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter(
     "%(asctime)s - %(process)d - %(levelname)s - %(filename)s:%(lineno)s - %(message)s"
 )
@@ -20,6 +23,7 @@ sh.setFormatter(formatter)
 logger.addHandler(sh)
 
 # config
+N_JOBS = 4
 RETRY_MAX = 5
 RETRY_BACKOFF = 0.2
 OFFSET = 10000
@@ -47,12 +51,13 @@ def query_etherscan(params):
             if data["status"] == "1":
                 return data["result"]
             else:
-                raise ValueError
+                raise ConnectionError(data["result"])
         except Exception as e:
             logger.debug(e)
             time.sleep(RETRY_BACKOFF * 2**retries)
             retries += 1
-    raise ConnectionError("Could not fetch values from Etherscan")
+    logger.debug("could not fetch data from Etherscan")
+    return []
 
 
 def fetch_transfers(address, tokens):
@@ -129,5 +134,10 @@ def run():
 
     session.close()
 
-    for address in tqdm(addresses):
-        fetch_transfers(address, tokens)
+    # parallel
+    pool = Parallel(backend="loky", n_jobs=N_JOBS)
+    jobs = [delayed(fetch_transfers)(address, tokens) for address in addresses]
+    logger.info(f"using {N_JOBS} processes")
+
+    with tqdm_joblib(tqdm(total=len(jobs))) as pbar:
+        result = pool(jobs)

@@ -1,10 +1,11 @@
-import os
 import json
-from tqdm import tqdm
-from sqlalchemy.dialects.postgresql import insert
 import logging
+import os
 
-from data.base import Base, engine, Session
+from sqlalchemy.dialects.postgresql import insert
+from tqdm import tqdm
+
+from data.base import Base, Session, engine
 from data.models import Protocol, Token
 
 # logger

@@ -1,4 +1,5 @@
 import click
+
 import scripts
 
 
@@ -27,6 +28,17 @@ def collect_transfers():
     scripts.collect_transfers.run()
 
     click.echo("Collecting ERC20 transfers complete")
+
+
+@cli.command()
+def collect_prices():
+    """Collects prices of ERC20 tokens from the DefiLlama API."""
+
+    click.echo("Collecting ERC20 prices from DefiLlama")
+
+    scripts.collect_prices.run()
+
+    click.echo("Collecting ERC20 prices complete")
 
 
 if __name__ == "__main__":
