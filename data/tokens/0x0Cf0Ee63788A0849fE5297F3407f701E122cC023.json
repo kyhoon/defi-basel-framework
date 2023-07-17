@@ -2,5 +2,6 @@
   "protocol": "streamr",
   "symbol": "DATA",
   "itin": "MWMWY46D0",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

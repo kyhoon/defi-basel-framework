@@ -2,5 +2,6 @@
   "protocol": "unus-sed-leo",
   "symbol": "LEO",
   "itin": "8TK6FGK24",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU02"
 }

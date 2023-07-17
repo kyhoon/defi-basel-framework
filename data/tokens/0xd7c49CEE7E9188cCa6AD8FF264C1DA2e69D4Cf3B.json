@@ -2,5 +2,6 @@
   "protocol": "wrapped-nxm",
   "symbol": "NXM",
   "itin": "R40KSYF14",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

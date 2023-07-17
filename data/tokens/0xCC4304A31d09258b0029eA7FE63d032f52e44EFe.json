@@ -2,5 +2,6 @@
   "protocol": "trustswap",
   "symbol": "SWAP",
   "itin": "KD0FN1DG8",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

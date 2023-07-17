@@ -2,5 +2,6 @@
   "protocol": "ampleforth",
   "symbol": "AMPL",
   "itin": "PR47SGP00",
-  "decimals": 9
+  "decimals": 9,
+  "itc_eep": "EEP21PP01USD"
 }

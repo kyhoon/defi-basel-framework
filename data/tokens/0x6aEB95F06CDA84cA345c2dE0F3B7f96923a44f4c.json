@@ -2,5 +2,6 @@
   "protocol": "rentberry",
   "symbol": "BERRY",
   "itin": "JR3GB39W3",
-  "decimals": 14
+  "decimals": 14,
+  "itc_eep": "EEP22S"
 }

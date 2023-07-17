@@ -2,5 +2,6 @@
   "protocol": "axie-infinity",
   "symbol": "AXS",
   "itin": "9QJSGQ6H3",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

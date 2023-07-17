@@ -2,5 +2,6 @@
   "protocol": "abyss",
   "symbol": "ABYSS",
   "itin": "S9PMF1S47",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

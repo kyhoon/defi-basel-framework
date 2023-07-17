@@ -2,5 +2,6 @@
   "protocol": "upfiring",
   "symbol": "UFR",
   "itin": "13VBG4Z82",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

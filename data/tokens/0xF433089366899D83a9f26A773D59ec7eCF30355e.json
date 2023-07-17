@@ -2,5 +2,6 @@
   "protocol": "metal-dao",
   "symbol": "MTL",
   "itin": "QS91SJD10",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP21U"
 }

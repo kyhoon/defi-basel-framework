@@ -2,5 +2,6 @@
   "protocol": "etherparty",
   "symbol": "FUEL",
   "itin": "NJNGHN0J2",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

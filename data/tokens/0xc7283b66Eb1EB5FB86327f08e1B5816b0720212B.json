@@ -2,5 +2,6 @@
   "protocol": "tribe",
   "symbol": "TRIBE",
   "itin": "H0B3ZTFY0",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

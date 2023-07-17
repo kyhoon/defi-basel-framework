@@ -2,5 +2,6 @@
   "protocol": "herocoin",
   "symbol": "PLAY",
   "itin": "HZMWHQZT2",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

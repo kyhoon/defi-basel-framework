@@ -2,5 +2,6 @@
   "protocol": "ultra",
   "symbol": "UOS",
   "itin": "CD0568853",
-  "decimals": 4
+  "decimals": 4,
+  "itc_eep": "EEP22TU02"
 }

@@ -2,5 +2,6 @@
   "protocol": "numeraire",
   "symbol": "NMR",
   "itin": "P93RGB1S6",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22NT01"
 }

@@ -2,5 +2,6 @@
   "protocol": "dmarket",
   "symbol": "DMT",
   "itin": "18WQM5614",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP22S"
 }

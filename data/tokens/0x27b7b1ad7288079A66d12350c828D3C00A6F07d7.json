@@ -2,5 +2,6 @@
   "protocol": "yearn-finance",
   "symbol": "yvCurve-IronBank",
   "itin": "2ZHHTDWR0",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP23DV"
 }

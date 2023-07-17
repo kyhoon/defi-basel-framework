@@ -2,5 +2,6 @@
   "protocol": "daex",
   "symbol": "DAX",
   "itin": "TFX2J5R29",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

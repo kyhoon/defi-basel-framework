@@ -2,5 +2,6 @@
   "protocol": "dentacoin",
   "symbol": "DCN",
   "itin": "5QNZ08FJ9",
-  "decimals": 0
+  "decimals": 0,
+  "itc_eep": "EEP22S"
 }

@@ -21,6 +21,7 @@ class Token(Base):
     protocol = relationship("Protocol")
     symbol = Column(String)
     itin = Column(String)
+    itc_eep = Column(String)
     decimals = Column(Integer)
     prices = relationship("Price")
 

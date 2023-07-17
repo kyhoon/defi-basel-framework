@@ -2,5 +2,6 @@
   "protocol": "circuits-of-value",
   "symbol": "COVAL",
   "itin": "F3645J3Y8",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP22S"
 }

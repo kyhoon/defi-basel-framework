@@ -2,5 +2,6 @@
   "protocol": "keep3r",
   "symbol": "KP3R",
   "itin": "QJVW6N016",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

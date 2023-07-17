@@ -2,5 +2,6 @@
   "protocol": "popsicle-finance",
   "symbol": "ICE",
   "itin": "51RCVGQH1",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

@@ -2,5 +2,6 @@
   "protocol": "remme",
   "symbol": "REM",
   "itin": "QJ39YB526",
-  "decimals": 4
+  "decimals": 4,
+  "itc_eep": "EEP22S"
 }

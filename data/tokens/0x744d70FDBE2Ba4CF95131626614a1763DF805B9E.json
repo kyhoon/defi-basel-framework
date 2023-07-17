@@ -2,5 +2,6 @@
   "protocol": "status",
   "symbol": "SNT",
   "itin": "FV0YD9SM8",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

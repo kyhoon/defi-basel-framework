@@ -2,5 +2,6 @@
   "protocol": "rocket-pool",
   "symbol": "RPL",
   "itin": "F2W89VRP4",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

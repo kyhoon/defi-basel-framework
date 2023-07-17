@@ -2,5 +2,6 @@
   "protocol": "uniswap",
   "symbol": "UniDAI/ETH",
   "itin": "9DQ5JWDZ0",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU01"
 }

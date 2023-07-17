@@ -2,5 +2,6 @@
   "protocol": "curve-dao-token",
   "symbol": "CRV",
   "itin": "H35Y1WNB4",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22NT02"
 }

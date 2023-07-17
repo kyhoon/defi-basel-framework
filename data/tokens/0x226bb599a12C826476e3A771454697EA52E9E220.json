@@ -2,5 +2,6 @@
   "protocol": "propy",
   "symbol": "PRO",
   "itin": "C4S9ZMS01",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP22S"
 }

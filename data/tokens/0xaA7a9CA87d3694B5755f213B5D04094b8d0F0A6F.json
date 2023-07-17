@@ -2,5 +2,6 @@
   "protocol": "origintrail",
   "symbol": "TRAC",
   "itin": "V410GXT12",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU02"
 }

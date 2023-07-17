@@ -2,5 +2,6 @@
   "protocol": "zebi-token",
   "symbol": "ZCO",
   "itin": "FR0Q29XK4",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP22S"
 }

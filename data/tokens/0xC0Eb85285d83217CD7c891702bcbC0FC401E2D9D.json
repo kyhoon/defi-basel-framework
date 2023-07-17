@@ -2,5 +2,6 @@
   "protocol": "hiveterminal-token",
   "symbol": "HVN",
   "itin": "8R4QR6T89",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP22S"
 }

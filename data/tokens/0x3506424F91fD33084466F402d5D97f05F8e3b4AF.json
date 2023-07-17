@@ -2,5 +2,6 @@
   "protocol": "chiliz",
   "symbol": "CHZ",
   "itin": "B9021BQ58",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU01"
 }

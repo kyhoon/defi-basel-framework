@@ -2,5 +2,6 @@
   "protocol": "abracadabra",
   "symbol": "abrCVXTC2",
   "itin": "Q4JTD5H21",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP23ZZ"
 }

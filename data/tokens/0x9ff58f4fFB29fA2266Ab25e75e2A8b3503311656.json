@@ -2,5 +2,6 @@
   "protocol": "aave",
   "symbol": "aWBTC",
   "itin": "WYB32Q5N6",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP23DV"
 }

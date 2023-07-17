@@ -2,5 +2,6 @@
   "protocol": "merit-circle",
   "symbol": "MC",
   "itin": "VT4FFDMW5",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22NT02"
 }

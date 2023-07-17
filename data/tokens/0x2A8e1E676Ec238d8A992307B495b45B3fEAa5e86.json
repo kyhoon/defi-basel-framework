@@ -2,5 +2,6 @@
   "protocol": "origin-dollar",
   "symbol": "OUSD",
   "itin": "VN06NVF43",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP21PP01USD"
 }

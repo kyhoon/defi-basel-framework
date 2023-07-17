@@ -2,5 +2,6 @@
   "protocol": "polybius",
   "symbol": "PLBT",
   "itin": "X6B6KYWR3",
-  "decimals": 6
+  "decimals": 6,
+  "itc_eep": "EEP23Z"
 }

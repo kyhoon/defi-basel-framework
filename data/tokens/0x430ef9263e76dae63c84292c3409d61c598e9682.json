@@ -2,5 +2,6 @@
   "protocol": "vulcan-forged",
   "symbol": "PYR",
   "itin": "KCMCJ79K1",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU02"
 }

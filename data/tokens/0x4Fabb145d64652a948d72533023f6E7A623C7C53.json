@@ -2,5 +2,6 @@
   "protocol": "binance-usd",
   "symbol": "BUSD",
   "itin": "HHWGZHP00",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP21PP01USD"
 }

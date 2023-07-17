@@ -2,5 +2,6 @@
   "protocol": "iexec-rlc",
   "symbol": "RLC",
   "itin": "D8455PY79",
-  "decimals": 9
+  "decimals": 9,
+  "itc_eep": "EEP22TU03"
 }

@@ -2,5 +2,6 @@
   "protocol": "refereum",
   "symbol": "RFR",
   "itin": "BFTNRB0X6",
-  "decimals": 4
+  "decimals": 4,
+  "itc_eep": "EEP22S"
 }

@@ -2,5 +2,6 @@
   "protocol": "yearn-finance",
   "symbol": "yvCurve-tBTC",
   "itin": "N0WCMDPS1",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP23DV"
 }

@@ -2,5 +2,6 @@
   "protocol": "enjin",
   "symbol": "ENJ",
   "itin": "VJZDHK848",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU02"
 }

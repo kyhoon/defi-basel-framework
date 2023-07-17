@@ -2,5 +2,6 @@
   "protocol": "veritaseum",
   "symbol": "VERI",
   "itin": "GGKS6M4M6",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22A"
 }

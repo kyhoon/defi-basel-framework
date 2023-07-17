@@ -2,5 +2,6 @@
   "protocol": "adtoken",
   "symbol": "ADT",
   "itin": "Q18149G07",
-  "decimals": 9
+  "decimals": 9,
+  "itc_eep": "EEP22G"
 }

@@ -2,5 +2,6 @@
   "protocol": "gelato",
   "symbol": "GEL",
   "itin": "VJZ05K666",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

@@ -2,5 +2,6 @@
   "protocol": "liquity",
   "symbol": "LUSD",
   "itin": "YRPSQWDT8",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP21PP01USD"
 }

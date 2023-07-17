@@ -2,5 +2,6 @@
   "protocol": "aeternity",
   "symbol": "AE",
   "itin": "N49YPRQ72",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

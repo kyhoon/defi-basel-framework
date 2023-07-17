@@ -2,5 +2,6 @@
   "protocol": "swissborg",
   "symbol": "CHSB",
   "itin": "RKDK9V033",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP22TU03"
 }

@@ -2,5 +2,6 @@
   "protocol": "maker",
   "symbol": "MKR",
   "itin": "C8BZRG4T7",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22NT02"
 }

@@ -2,5 +2,6 @@
   "protocol": "playkey",
   "symbol": "PKT",
   "itin": "Q4D973D19",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

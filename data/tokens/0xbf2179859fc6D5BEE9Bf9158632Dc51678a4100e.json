@@ -2,5 +2,6 @@
   "protocol": "aelf",
   "symbol": "ELF",
   "itin": "1X0DZ2525",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

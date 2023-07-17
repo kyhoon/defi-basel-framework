@@ -2,5 +2,6 @@
   "protocol": "exrnchain",
   "symbol": "EXRN",
   "itin": "6RN4YYX51",
-  "decimals": 0
+  "decimals": 0,
+  "itc_eep": "EEP22S"
 }

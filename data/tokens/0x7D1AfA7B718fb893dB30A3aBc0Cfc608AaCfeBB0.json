@@ -2,5 +2,6 @@
   "protocol": "polygon",
   "symbol": "MATIC",
   "itin": "3F5Z9PJH8",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

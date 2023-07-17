@@ -2,5 +2,6 @@
   "protocol": "cbc-network",
   "symbol": "CBC",
   "itin": "3QPVKZVP4",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP22S"
 }

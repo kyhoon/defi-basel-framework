@@ -2,5 +2,6 @@
   "protocol": "nitro-network",
   "symbol": "NCASH",
   "itin": "NVDWFYBN8",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

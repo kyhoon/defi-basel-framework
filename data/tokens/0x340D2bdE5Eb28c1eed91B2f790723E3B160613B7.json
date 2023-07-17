@@ -2,5 +2,6 @@
   "protocol": "blockv",
   "symbol": "VEE",
   "itin": "Z3J1XWV35",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

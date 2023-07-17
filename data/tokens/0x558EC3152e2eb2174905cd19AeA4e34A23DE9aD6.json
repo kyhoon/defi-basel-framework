@@ -2,5 +2,6 @@
   "protocol": "bread",
   "symbol": "BRD",
   "itin": "GYVYW4CY8",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22A"
 }

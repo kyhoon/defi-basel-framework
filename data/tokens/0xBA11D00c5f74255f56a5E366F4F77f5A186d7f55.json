@@ -2,5 +2,6 @@
   "protocol": "band-protocol",
   "symbol": "BAND",
   "itin": "ZPXKKJ6P0",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

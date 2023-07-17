@@ -2,5 +2,6 @@
   "protocol": "aurora",
   "symbol": "AOA",
   "itin": "6N2YJG1C3",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

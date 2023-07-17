@@ -2,5 +2,6 @@
   "protocol": "idle-finance",
   "symbol": "IDLE",
   "itin": "KT2N1ZD81",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22NT02"
 }

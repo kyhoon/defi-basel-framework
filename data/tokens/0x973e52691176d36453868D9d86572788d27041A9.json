@@ -2,5 +2,6 @@
   "protocol": "dxchain-token",
   "symbol": "DX",
   "itin": "D9Z0CMH07",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU01"
 }

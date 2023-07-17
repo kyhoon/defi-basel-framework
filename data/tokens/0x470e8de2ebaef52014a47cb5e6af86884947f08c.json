@@ -2,5 +2,6 @@
   "protocol": "uniswap",
   "symbol": "UniETH/FOX",
   "itin": "S4GJX74F3",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU01"
 }

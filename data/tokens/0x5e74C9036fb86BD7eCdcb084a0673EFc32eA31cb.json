@@ -2,5 +2,6 @@
   "protocol": "synthetix",
   "symbol": "sETH",
   "itin": "W5SF9VQ29",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP23DV"
 }

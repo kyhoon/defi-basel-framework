@@ -2,5 +2,6 @@
   "protocol": "syntropy",
   "symbol": "NOIA",
   "itin": "BQ1C9FSQ2",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU01"
 }

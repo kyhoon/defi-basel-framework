@@ -2,5 +2,6 @@
   "protocol": "doc-com",
   "symbol": "MTC",
   "itin": "7P42FD2B7",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

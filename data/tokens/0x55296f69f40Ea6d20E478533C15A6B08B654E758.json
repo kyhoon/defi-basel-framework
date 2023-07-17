@@ -2,5 +2,6 @@
   "protocol": "xyo",
   "symbol": "XYO",
   "itin": "9KJ4WJW39",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

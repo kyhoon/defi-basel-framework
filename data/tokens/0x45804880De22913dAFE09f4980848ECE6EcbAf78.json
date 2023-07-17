@@ -2,5 +2,6 @@
   "protocol": "pax-gold",
   "symbol": "PAXG",
   "itin": "7G2HV0QQ7",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP23ER"
 }

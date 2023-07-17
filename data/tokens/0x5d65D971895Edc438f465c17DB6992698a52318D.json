@@ -2,5 +2,6 @@
   "protocol": "nebulas",
   "symbol": "NAS",
   "itin": "8K8D08QH7",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }
