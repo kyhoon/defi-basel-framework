@@ -2,5 +2,6 @@
   "protocol": "morpheus-labs",
   "symbol": "MITX",
   "itin": "M8PRYKHR2",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

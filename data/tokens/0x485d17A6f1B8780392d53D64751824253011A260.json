@@ -2,5 +2,6 @@
   "protocol": "chrono-tech",
   "symbol": "TIME",
   "itin": "RQP7P4RP0",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP22S"
 }

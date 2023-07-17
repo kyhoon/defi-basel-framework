@@ -2,5 +2,6 @@
   "protocol": "swarm-markets",
   "symbol": "SMT",
   "itin": "NS8ZK44F9",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU02"
 }

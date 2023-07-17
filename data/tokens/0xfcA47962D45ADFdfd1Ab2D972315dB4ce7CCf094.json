@@ -2,5 +2,6 @@
   "protocol": "ixt",
   "symbol": "IXT",
   "itin": "WK7WV3HX1",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP22S"
 }

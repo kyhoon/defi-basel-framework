@@ -2,5 +2,6 @@
   "protocol": "pluton",
   "symbol": "PLU",
   "itin": "JXZQRW654",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

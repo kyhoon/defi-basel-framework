@@ -2,5 +2,6 @@
   "protocol": "ripio-credit-network",
   "symbol": "RCN",
   "itin": "MC8JT01V8",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

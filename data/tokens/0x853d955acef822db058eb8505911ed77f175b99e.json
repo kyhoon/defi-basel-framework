@@ -2,5 +2,6 @@
   "protocol": "frax",
   "symbol": "FRAX",
   "itin": "S9SRXFM22",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP21PP01USD"
 }

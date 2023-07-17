@@ -2,5 +2,6 @@
   "protocol": "pillar",
   "symbol": "PLR",
   "itin": "GX7VHXN16",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

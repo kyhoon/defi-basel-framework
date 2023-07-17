@@ -2,5 +2,6 @@
   "protocol": "okb",
   "symbol": "OKB",
   "itin": "D6CRHMVH1",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU02"
 }

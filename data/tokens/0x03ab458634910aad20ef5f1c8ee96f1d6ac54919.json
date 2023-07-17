@@ -2,5 +2,6 @@
   "protocol": "rai-reflex-index",
   "symbol": "RAI",
   "itin": "PZT580KV3",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP21UP"
 }

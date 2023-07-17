@@ -2,5 +2,6 @@
   "protocol": "quantstamp",
   "symbol": "QSP",
   "itin": "NM2MBBZD2",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

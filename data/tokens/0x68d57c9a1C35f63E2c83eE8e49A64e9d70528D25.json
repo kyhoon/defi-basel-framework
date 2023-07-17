@@ -2,5 +2,6 @@
   "protocol": "sirin-labs-token",
   "symbol": "SRN",
   "itin": "9W27TKRJ6",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

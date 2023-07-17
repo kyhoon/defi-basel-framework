@@ -2,5 +2,6 @@
   "protocol": "echolink",
   "symbol": "EKO",
   "itin": "M86YV46S7",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

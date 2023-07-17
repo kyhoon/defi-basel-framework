@@ -2,5 +2,6 @@
   "protocol": "indorse-token",
   "symbol": "IND",
   "itin": "8XXJBD6W4",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

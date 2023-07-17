@@ -2,5 +2,6 @@
   "protocol": "illuvium",
   "symbol": "ILV",
   "itin": "THXRN6G82",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22NT02"
 }

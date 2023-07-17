@@ -2,5 +2,6 @@
   "protocol": "iotex",
   "symbol": "IOTX",
   "itin": "9ZB7N43M0",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

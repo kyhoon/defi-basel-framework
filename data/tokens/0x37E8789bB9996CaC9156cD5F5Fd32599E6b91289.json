@@ -2,5 +2,6 @@
   "protocol": "aidcoin",
   "symbol": "AID",
   "itin": "13HZRYY70",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

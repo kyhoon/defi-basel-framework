@@ -2,5 +2,6 @@
   "protocol": "ren",
   "symbol": "REN",
   "itin": "21ZB176Y5",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU01"
 }

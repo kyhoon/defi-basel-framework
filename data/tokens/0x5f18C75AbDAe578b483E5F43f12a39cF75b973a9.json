@@ -2,5 +2,6 @@
   "protocol": "yearn-finance",
   "symbol": "yvUSDC",
   "itin": "S6WD3YZM8",
-  "decimals": 6
+  "decimals": 6,
+  "itc_eep": "EEP23DV"
 }

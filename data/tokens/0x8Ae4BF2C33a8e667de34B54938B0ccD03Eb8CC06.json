@@ -2,5 +2,6 @@
   "protocol": "patientory",
   "symbol": "PTOY",
   "itin": "5VVH67W56",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP22S"
 }

@@ -41,5 +41,15 @@
     "0x7350c6d00d63ab5988250aea347f277c19bea785",
     "0x0cd8fd90bacc7a676fcc7c0d7573b970f8784b50",
     "0x7589c9e17bcfce1ccaa1f921196fda177f0207fc"
+  ],
+  "hacks": [
+    {
+      "date": "2021-08-30",
+      "amount": 18800000
+    },
+    {
+      "date": "2021-10-27",
+      "amount": 130000000
+    }
   ]
 }

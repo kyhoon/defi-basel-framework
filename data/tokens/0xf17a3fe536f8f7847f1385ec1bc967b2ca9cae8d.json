@@ -2,5 +2,6 @@
   "protocol": "alongside-crypto-market-index",
   "symbol": "AMKT",
   "itin": "HJTX5M663",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP23FD"
 }

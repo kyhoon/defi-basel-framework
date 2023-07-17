@@ -2,5 +2,6 @@
   "protocol": "origin-sport",
   "symbol": "ORS",
   "itin": "DP5QJ4HY6",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

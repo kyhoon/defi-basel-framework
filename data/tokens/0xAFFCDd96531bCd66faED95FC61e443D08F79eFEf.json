@@ -2,5 +2,6 @@
   "protocol": "perth-mint-gold-token",
   "symbol": "PMGT",
   "itin": "CXNZRS0F7",
-  "decimals": 5
+  "decimals": 5,
+  "itc_eep": "EEP23EQ"
 }

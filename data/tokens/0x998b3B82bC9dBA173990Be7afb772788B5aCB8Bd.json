@@ -2,5 +2,6 @@
   "protocol": "banca",
   "symbol": "BANCA",
   "itin": "W9CQKFJ65",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

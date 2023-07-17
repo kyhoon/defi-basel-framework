@@ -2,5 +2,6 @@
   "protocol": "po-et",
   "symbol": "POE",
   "itin": "CFG1Z57K2",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP22S"
 }

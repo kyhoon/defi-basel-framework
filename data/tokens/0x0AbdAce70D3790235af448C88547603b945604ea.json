@@ -2,5 +2,6 @@
   "protocol": "district0x",
   "symbol": "DNT",
   "itin": "F4P44F3G3",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22NT02"
 }

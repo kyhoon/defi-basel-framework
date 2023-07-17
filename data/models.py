@@ -1,5 +1,6 @@
-from sqlalchemy import Column, String, Integer, ForeignKey, ARRAY
+from sqlalchemy import ARRAY, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
+
 from data.base import Base
 
 
@@ -20,6 +21,7 @@ class Token(Base):
     protocol = relationship("Protocol")
     symbol = Column(String)
     itin = Column(String)
+    itc_eep = Column(String)
     decimals = Column(Integer)
     prices = relationship("Price")
 
@@ -29,6 +31,7 @@ class Price(Base):
 
     block_number = Column(Integer, primary_key=True)
     token_id = Column(String, ForeignKey("tokens.id"), primary_key=True)
+    timestamp = Column(Integer)
     usd_value = Column(String)
 
 
@@ -44,10 +47,3 @@ class Transfer(Base):
     from_address = Column(String)
     to_address = Column(String)
     value = Column(String)
-
-
-class Contract(Base):
-    __tablename__ = "contracts"
-
-    id = Column(String, primary_key=True)
-    from_block = Column(Integer, nullable=True)

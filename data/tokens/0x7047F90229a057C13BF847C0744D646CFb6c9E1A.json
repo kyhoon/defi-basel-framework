@@ -2,5 +2,6 @@
   "protocol": "yearn-finance",
   "symbol": "yvCurve-renBTC",
   "itin": "29Z2M3B77",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP23DV"
 }

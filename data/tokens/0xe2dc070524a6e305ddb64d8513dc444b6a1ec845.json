@@ -2,5 +2,6 @@
   "protocol": "nash",
   "symbol": "NAS",
   "itin": "T4SRTGSY9",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP23ZZ"
 }

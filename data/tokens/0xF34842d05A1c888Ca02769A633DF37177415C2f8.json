@@ -2,5 +2,6 @@
   "protocol": "idle-finance",
   "symbol": "IdleUSDTBest",
   "itin": "DBVG3FB93",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP23DV"
 }

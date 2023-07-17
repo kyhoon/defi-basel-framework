@@ -28,5 +28,11 @@
     "0xbc2fb245594a68c927c930fbe2d00680a8c90b9e",
     "0x49930ad9ebbbc0eb120ccf1a318c3ae5bb24df55",
     "0xb039ea6153c827e59b620bdcd974f7bbfe68214a"
+  ],
+  "hacks": [
+    {
+      "date": "2021-06-16",
+      "amount": 6500000
+    }
   ]
 }

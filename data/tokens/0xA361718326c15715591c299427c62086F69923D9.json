@@ -2,5 +2,6 @@
   "protocol": "aave",
   "symbol": "aBUSD",
   "itin": "69DSG4FR7",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP23DV"
 }

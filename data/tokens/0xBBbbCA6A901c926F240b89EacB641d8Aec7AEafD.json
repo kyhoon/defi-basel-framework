@@ -2,5 +2,6 @@
   "protocol": "loopring",
   "symbol": "LRC",
   "itin": "5D1V51156",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU02"
 }

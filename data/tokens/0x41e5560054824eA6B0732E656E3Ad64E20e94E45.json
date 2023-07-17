@@ -2,5 +2,6 @@
   "protocol": "civic",
   "symbol": "CVC",
   "itin": "WTH84N5B1",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP22TU01"
 }

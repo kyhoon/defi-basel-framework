@@ -2,5 +2,6 @@
   "protocol": "fetch-ai",
   "symbol": "FET",
   "itin": "N48R7KM44",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

@@ -2,5 +2,6 @@
   "protocol": "serum",
   "symbol": "SRM",
   "itin": "VJRGN62M0",
-  "decimals": 6
+  "decimals": 6,
+  "itc_eep": "EEP22TU03"
 }

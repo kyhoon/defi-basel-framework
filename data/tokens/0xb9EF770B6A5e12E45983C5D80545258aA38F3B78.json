@@ -2,5 +2,6 @@
   "protocol": "zus",
   "symbol": "ZCN",
   "itin": "M6XP0PC19",
-  "decimals": 10
+  "decimals": 10,
+  "itc_eep": "EEP22S"
 }

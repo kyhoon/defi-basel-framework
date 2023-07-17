@@ -2,5 +2,6 @@
   "protocol": "measurable-data-token",
   "symbol": "MDT",
   "itin": "4RD2T6GB1",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

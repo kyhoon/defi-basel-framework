@@ -2,5 +2,6 @@
   "protocol": "locktrip",
   "symbol": "LOC",
   "itin": "P3QX2Y891",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

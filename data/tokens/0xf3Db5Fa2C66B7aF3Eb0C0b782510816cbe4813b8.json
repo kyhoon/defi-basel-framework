@@ -2,5 +2,6 @@
   "protocol": "everex",
   "symbol": "EVX",
   "itin": "V3GHG6FN7",
-  "decimals": 4
+  "decimals": 4,
+  "itc_eep": "EEP22A"
 }

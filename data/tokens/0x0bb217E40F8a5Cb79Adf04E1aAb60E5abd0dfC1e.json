@@ -2,5 +2,6 @@
   "protocol": "swftcoin",
   "symbol": "SWFTC",
   "itin": "ZXDVZC118",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP22S"
 }

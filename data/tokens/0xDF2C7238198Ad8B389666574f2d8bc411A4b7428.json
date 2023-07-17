@@ -2,5 +2,6 @@
   "protocol": "hifi-finance",
   "symbol": "MFT",
   "itin": "3VPBG2KK8",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

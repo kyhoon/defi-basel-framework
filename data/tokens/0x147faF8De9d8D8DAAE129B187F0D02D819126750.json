@@ -2,5 +2,6 @@
   "protocol": "geodb",
   "symbol": "GEO",
   "itin": "PKBCT0XF8",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

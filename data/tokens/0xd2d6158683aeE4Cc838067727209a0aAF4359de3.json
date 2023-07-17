@@ -2,5 +2,6 @@
   "protocol": "bounty0x",
   "symbol": "BNTY",
   "itin": "S3717XS60",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

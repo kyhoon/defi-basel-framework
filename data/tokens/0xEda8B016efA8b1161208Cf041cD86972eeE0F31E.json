@@ -2,5 +2,6 @@
   "protocol": "iht-real-estate-protocol",
   "symbol": "IHT",
   "itin": "QKWCVQ508",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22O"
 }

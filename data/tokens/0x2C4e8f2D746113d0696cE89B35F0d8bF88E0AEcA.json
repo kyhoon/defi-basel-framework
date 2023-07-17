@@ -2,5 +2,6 @@
   "protocol": "ost",
   "symbol": "OST",
   "itin": "XDKV7NVT9",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

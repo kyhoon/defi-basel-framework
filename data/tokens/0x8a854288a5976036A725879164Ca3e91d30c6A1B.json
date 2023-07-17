@@ -2,5 +2,6 @@
   "protocol": "get-protocol",
   "symbol": "GET",
   "itin": "Y89HWVB28",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

@@ -1,4 +1,8 @@
 version: "3.9"
+
+volumes:
+  pgdata:
+
 services:
   postgres:
     image: postgres:latest
@@ -10,4 +14,4 @@ services:
     ports:
       - ${POSTGRES_PORT}:5432
     volumes:
-      - ${PGDATA}:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data

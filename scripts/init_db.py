@@ -1,10 +1,11 @@
-import os
 import json
-from tqdm import tqdm
-from sqlalchemy.dialects.postgresql import insert
 import logging
+import os
 
-from data.base import Base, engine, Session
+from sqlalchemy.dialects.postgresql import insert
+from tqdm import tqdm
+
+from data.base import Base, Session, engine
 from data.models import Protocol, Token
 
 # logger
@@ -33,15 +34,15 @@ def run():
             .values(
                 id=filename.split(".")[0],
                 rating=data["rating"],
-                treasury=data["treasury"],
-                addresses=data["addresses"],
+                treasury=[address.lower() for address in data["treasury"]],
+                addresses=[address.lower() for address in data["addresses"]],
             )
             .on_conflict_do_update(
                 index_elements=["id"],
                 set_={
                     "rating": data["rating"],
-                    "treasury": data["treasury"],
-                    "addresses": data["addresses"],
+                    "treasury": [address.lower() for address in data["treasury"]],
+                    "addresses": [address.lower() for address in data["addresses"]],
                 },
             )
         )
@@ -57,7 +58,7 @@ def run():
         stmt = (
             insert(Token)
             .values(
-                id=filename.split(".")[0],
+                id=filename.split(".")[0].lower(),
                 protocol_id=data["protocol"],
                 symbol=data["symbol"],
                 itin=data["itin"],

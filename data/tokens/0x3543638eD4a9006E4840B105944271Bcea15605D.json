@@ -2,5 +2,6 @@
   "protocol": "u-network",
   "symbol": "UUU",
   "itin": "7RPDDFZS0",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

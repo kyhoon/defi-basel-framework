@@ -2,5 +2,6 @@
   "protocol": "maker",
   "symbol": "DAI",
   "itin": "HT6PV80N4",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP21PP01USD"
 }

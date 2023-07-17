@@ -2,5 +2,6 @@
   "protocol": "yearn-finance",
   "symbol": "YFI",
   "itin": "SJDHH2DJ8",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

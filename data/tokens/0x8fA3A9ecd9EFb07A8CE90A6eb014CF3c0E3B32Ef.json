@@ -2,5 +2,6 @@
   "protocol": "yearn-finance",
   "symbol": "yvCurve-BBTC",
   "itin": "MQTR95DB8",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP23DV"
 }

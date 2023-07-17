@@ -2,5 +2,6 @@
   "protocol": "time-new-bank",
   "symbol": "TNB",
   "itin": "GB2SM76F5",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

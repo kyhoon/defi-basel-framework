@@ -1,4 +1,5 @@
 import click
+
 import scripts
 
 
@@ -19,34 +20,25 @@ def init_db():
 
 
 @cli.command()
-def clear_transfers():
-    """drops the contracts and transfers in the PostgreSQL database."""
+def collect_transfers():
+    """Collects ERC20 transfer data from the Etherscan API."""
 
-    click.echo("Dropping contracts and transfers from database")
+    click.echo("Collecting ERC20 transfers from Etherscan")
 
-    from data.base import Session
-    from data.models import Contract, Transfer
+    scripts.collect_transfers.run()
 
-    with Session() as session:
-        session.query(Contract).delete()
-        session.query(Transfer).delete()
-        session.commit()
-
-    click.echo("Dropping tables complete")
+    click.echo("Collecting ERC20 transfers complete")
 
 
 @cli.command()
-@click.argument("path", type=click.Path(exists=True))
-def collect_transfers(path):
-    """Temporarily dumps the ERC20 transfer data in PATH,
-    then registers the data in the PostgreSQL database.
-    """
+def collect_prices():
+    """Collects prices of ERC20 tokens from the DefiLlama API."""
 
-    click.echo("Collecting ERC20 transfers")
+    click.echo("Collecting ERC20 prices from DefiLlama")
 
-    scripts.collect_transfers.run(path=path)
+    scripts.collect_prices.run()
 
-    click.echo("Collecting ERC20 transfers complete")
+    click.echo("Collecting ERC20 prices complete")
 
 
 if __name__ == "__main__":

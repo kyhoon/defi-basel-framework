@@ -2,5 +2,6 @@
   "protocol": "monetha",
   "symbol": "MTH",
   "itin": "9DK8CYWD1",
-  "decimals": 5
+  "decimals": 5,
+  "itc_eep": "EEP22S"
 }

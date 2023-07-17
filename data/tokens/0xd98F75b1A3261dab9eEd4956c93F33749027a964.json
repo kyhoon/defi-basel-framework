@@ -2,5 +2,6 @@
   "protocol": "sharetoken",
   "symbol": "SHR",
   "itin": "DZ4N77T74",
-  "decimals": 2
+  "decimals": 2,
+  "itc_eep": "EEP22TU03"
 }

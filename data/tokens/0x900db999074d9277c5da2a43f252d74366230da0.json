@@ -2,5 +2,6 @@
   "protocol": "giveth",
   "symbol": "GIV",
   "itin": "Q450VPV29",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

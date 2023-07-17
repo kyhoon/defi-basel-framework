@@ -2,5 +2,6 @@
   "protocol": "1inch-network",
   "symbol": "1INCH",
   "itin": "5SN0WKQ33",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22TU03"
 }

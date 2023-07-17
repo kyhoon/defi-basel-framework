@@ -2,5 +2,6 @@
   "protocol": "delphy",
   "symbol": "DPY",
   "itin": "JRRNX53X7",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP22S"
 }

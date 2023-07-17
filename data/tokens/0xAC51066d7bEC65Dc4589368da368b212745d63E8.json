@@ -2,5 +2,6 @@
   "protocol": "myneighboralice",
   "symbol": "ALICE",
   "itin": "DHHGN65Q3",
-  "decimals": 6
+  "decimals": 6,
+  "itc_eep": "EEP22NT02"
 }

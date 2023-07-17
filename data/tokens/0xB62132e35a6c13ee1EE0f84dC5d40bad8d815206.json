@@ -2,5 +2,6 @@
   "protocol": "nexo",
   "symbol": "NEXO",
   "itin": "M4QWF0SJ0",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP23ZZ"
 }

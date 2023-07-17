@@ -2,5 +2,6 @@
   "protocol": "domraider",
   "symbol": "DRT",
   "itin": "G4QDRJPZ2",
-  "decimals": 8
+  "decimals": 8,
+  "itc_eep": "EEP22S"
 }

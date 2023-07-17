@@ -2,5 +2,6 @@
   "protocol": "angle",
   "symbol": "agEUR",
   "itin": "QC59HF9Z2",
-  "decimals": 18
+  "decimals": 18,
+  "itc_eep": "EEP21PP01EUR"
 }

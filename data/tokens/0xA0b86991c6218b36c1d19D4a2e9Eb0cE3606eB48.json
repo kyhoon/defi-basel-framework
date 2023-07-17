@@ -2,5 +2,6 @@
   "protocol": "usd-coin",
   "symbol": "USDC",
   "itin": "W9P03QJ63",
-  "decimals": 6
+  "decimals": 6,
+  "itc_eep": "EEP21PP01USD"
 }
