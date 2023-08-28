@@ -3,5 +3,6 @@
   "symbol": "GT",
   "itin": "SN62G2PD1",
   "decimals": 18,
-  "itc_eep": "EEP22TU03"
+  "itc_eep": "EEP22TU03",
+  "underlying": null
 }

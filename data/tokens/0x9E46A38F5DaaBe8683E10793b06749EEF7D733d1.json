@@ -3,5 +3,6 @@
   "symbol": "NCT",
   "itin": "JVNG6B496",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "CXO",
   "itin": "XCGJQ9ZF9",
   "decimals": 18,
-  "itc_eep": "EEP22O"
+  "itc_eep": "EEP22O",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "HIGH",
   "itin": "5DRF8Q1S5",
   "decimals": 18,
-  "itc_eep": "EEP22NT02"
+  "itc_eep": "EEP22NT02",
+  "underlying": null
 }

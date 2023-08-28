@@ -3,5 +3,6 @@
   "symbol": "GEAR",
   "itin": "Y0YMKD9J5",
   "decimals": 18,
-  "itc_eep": "EEP22NT02"
+  "itc_eep": "EEP22NT02",
+  "underlying": null
 }

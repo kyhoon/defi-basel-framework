@@ -3,5 +3,6 @@
   "symbol": "OCEAN",
   "itin": "FT6BGXK56",
   "decimals": 18,
-  "itc_eep": "EEP22TU03"
+  "itc_eep": "EEP22TU03",
+  "underlying": null
 }

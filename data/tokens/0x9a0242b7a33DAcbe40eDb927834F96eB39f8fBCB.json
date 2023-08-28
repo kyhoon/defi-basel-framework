@@ -3,5 +3,6 @@
   "symbol": "BAX",
   "itin": "7XS2GSWW1",
   "decimals": 18,
-  "itc_eep": "EEP21U"
+  "itc_eep": "EEP21U",
+  "underlying": null
 }

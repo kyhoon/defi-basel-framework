@@ -3,5 +3,6 @@
   "symbol": "PRO",
   "itin": "C4S9ZMS01",
   "decimals": 8,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

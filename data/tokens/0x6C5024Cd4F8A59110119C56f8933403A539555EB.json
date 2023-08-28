@@ -3,5 +3,6 @@
   "symbol": "aSUSD",
   "itin": "1QRMHC1Y3",
   "decimals": 18,
-  "itc_eep": "EEP23DV"
+  "itc_eep": "EEP23DV",
+  "underlying": "0x57Ab1ec28D129707052df4dF418D58a2D46d5f51"
 }

@@ -3,5 +3,6 @@
   "symbol": "SALT",
   "itin": "7F7355NW3",
   "decimals": 8,
-  "itc_eep": "EEP22A"
+  "itc_eep": "EEP22A",
+  "underlying": null
 }

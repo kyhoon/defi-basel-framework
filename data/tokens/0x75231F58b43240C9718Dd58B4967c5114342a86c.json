@@ -3,5 +3,6 @@
   "symbol": "OKB",
   "itin": "D6CRHMVH1",
   "decimals": 18,
-  "itc_eep": "EEP22TU02"
+  "itc_eep": "EEP22TU02",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "HMQ",
   "itin": "YTVC77203",
   "decimals": 8,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

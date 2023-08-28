@@ -3,5 +3,6 @@
   "symbol": "MDS",
   "itin": "ZN7Q5V762",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

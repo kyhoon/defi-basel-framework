@@ -3,5 +3,6 @@
   "symbol": "USDT",
   "itin": "31R25SHC9",
   "decimals": 6,
-  "itc_eep": "EEP21PP01USD"
+  "itc_eep": "EEP21PP01USD",
+  "underlying": null
 }

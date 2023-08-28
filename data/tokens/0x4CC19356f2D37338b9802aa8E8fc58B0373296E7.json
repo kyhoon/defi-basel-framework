@@ -3,5 +3,6 @@
   "symbol": "KEY",
   "itin": "9SNGPN9C5",
   "decimals": 18,
-  "itc_eep": "EEP22A"
+  "itc_eep": "EEP22A",
+  "underlying": null
 }

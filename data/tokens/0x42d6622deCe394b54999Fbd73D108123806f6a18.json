@@ -3,5 +3,6 @@
   "symbol": "SPANK",
   "itin": "3GT0GPG90",
   "decimals": 18,
-  "itc_eep": "EEP22A"
+  "itc_eep": "EEP22A",
+  "underlying": null
 }

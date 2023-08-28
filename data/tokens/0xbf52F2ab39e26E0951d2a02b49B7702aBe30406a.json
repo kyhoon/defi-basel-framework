@@ -3,5 +3,6 @@
   "symbol": "ODE",
   "itin": "H7KV0JC34",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

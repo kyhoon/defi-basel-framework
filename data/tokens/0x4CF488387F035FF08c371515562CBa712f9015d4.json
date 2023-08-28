@@ -3,5 +3,6 @@
   "symbol": "WPR",
   "itin": "9N6PQVFW5",
   "decimals": 18,
-  "itc_eep": "EEP22A"
+  "itc_eep": "EEP22A",
+  "underlying": null
 }

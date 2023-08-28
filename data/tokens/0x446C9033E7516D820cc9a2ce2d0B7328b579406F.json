@@ -3,5 +3,6 @@
   "symbol": "SOLVE",
   "itin": "2D2F5HMW6",
   "decimals": 8,
-  "itc_eep": "EEP22TU02"
+  "itc_eep": "EEP22TU02",
+  "underlying": null
 }

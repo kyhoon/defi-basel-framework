@@ -3,5 +3,6 @@
   "symbol": "SXP",
   "itin": "W7C2VFV17",
   "decimals": 18,
-  "itc_eep": "EEP22TU02"
+  "itc_eep": "EEP22TU02",
+  "underlying": null
 }

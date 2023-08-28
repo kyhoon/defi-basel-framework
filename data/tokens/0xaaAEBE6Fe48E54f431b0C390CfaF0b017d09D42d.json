@@ -3,5 +3,6 @@
   "symbol": "CEL",
   "itin": "FWYQGBVQ5",
   "decimals": 4,
-  "itc_eep": "EEP22TU03"
+  "itc_eep": "EEP22TU03",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "TNB",
   "itin": "GB2SM76F5",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

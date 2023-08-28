@@ -3,5 +3,6 @@
   "symbol": "ALICE",
   "itin": "DHHGN65Q3",
   "decimals": 6,
-  "itc_eep": "EEP22NT02"
+  "itc_eep": "EEP22NT02",
+  "underlying": null
 }

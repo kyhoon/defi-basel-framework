@@ -3,5 +3,6 @@
   "symbol": "BFT",
   "itin": "NYDG767J1",
   "decimals": 18,
-  "itc_eep": "EEP22A"
+  "itc_eep": "EEP22A",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "yv1INCH",
   "itin": "B8M8FHCJ0",
   "decimals": 18,
-  "itc_eep": "EEP23DV"
+  "itc_eep": "EEP23DV",
+  "underlying": "0x111111111117dc0aa78b770fa6a738034120c302"
 }

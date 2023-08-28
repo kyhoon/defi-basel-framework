@@ -3,5 +3,6 @@
   "symbol": "Aave interest bearing BAT",
   "itin": "8P92MQGH6",
   "decimals": 18,
-  "itc_eep": "EEP23DV"
+  "itc_eep": "EEP23DV",
+  "underlying": "0x0D8775F648430679A709E98d2b0Cb6250d2887EF"
 }

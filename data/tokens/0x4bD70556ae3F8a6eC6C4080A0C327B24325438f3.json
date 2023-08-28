@@ -3,5 +3,6 @@
   "symbol": "HXRO",
   "itin": "S0F7JN6T7",
   "decimals": 18,
-  "itc_eep": "EEP22TU02"
+  "itc_eep": "EEP22TU02",
+  "underlying": null
 }

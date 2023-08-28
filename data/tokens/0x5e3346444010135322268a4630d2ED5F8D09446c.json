@@ -3,5 +3,6 @@
   "symbol": "LOC",
   "itin": "P3QX2Y891",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

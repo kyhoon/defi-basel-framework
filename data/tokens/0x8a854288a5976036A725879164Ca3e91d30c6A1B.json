@@ -3,5 +3,6 @@
   "symbol": "GET",
   "itin": "Y89HWVB28",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

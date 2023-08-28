@@ -3,5 +3,6 @@
   "symbol": "AIT",
   "itin": "7PZYDN6Y9",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

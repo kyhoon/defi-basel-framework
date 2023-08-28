@@ -3,5 +3,6 @@
   "symbol": "VIB",
   "itin": "3J64R4S44",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

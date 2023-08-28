@@ -3,5 +3,6 @@
   "symbol": "YFI",
   "itin": "SJDHH2DJ8",
   "decimals": 18,
-  "itc_eep": "EEP22TU03"
+  "itc_eep": "EEP22TU03",
+  "underlying": null
 }

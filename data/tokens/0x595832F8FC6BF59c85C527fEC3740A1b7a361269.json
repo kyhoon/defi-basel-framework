@@ -3,5 +3,6 @@
   "symbol": "POWR",
   "itin": "RXR6XZHP8",
   "decimals": 6,
-  "itc_eep": "EEP22NT01"
+  "itc_eep": "EEP22NT01",
+  "underlying": null
 }

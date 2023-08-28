@@ -3,5 +3,6 @@
   "symbol": "UPP",
   "itin": "DBV24S964",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

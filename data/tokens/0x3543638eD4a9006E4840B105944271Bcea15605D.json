@@ -3,5 +3,6 @@
   "symbol": "UUU",
   "itin": "7RPDDFZS0",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

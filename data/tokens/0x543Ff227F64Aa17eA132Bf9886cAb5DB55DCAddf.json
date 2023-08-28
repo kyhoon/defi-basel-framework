@@ -3,5 +3,6 @@
   "symbol": "GEN",
   "itin": "XX519SWW7",
   "decimals": 18,
-  "itc_eep": "EEP22G"
+  "itc_eep": "EEP22G",
+  "underlying": null
 }

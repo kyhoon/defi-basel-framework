@@ -3,5 +3,6 @@
   "symbol": "WBTC",
   "itin": "KJ05G9X19",
   "decimals": 8,
-  "itc_eep": "EEP23DV03"
+  "itc_eep": "EEP23DV03",
+  "underlying": null
 }

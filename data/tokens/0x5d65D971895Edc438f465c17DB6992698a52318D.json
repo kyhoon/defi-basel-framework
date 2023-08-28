@@ -3,5 +3,6 @@
   "symbol": "NAS",
   "itin": "8K8D08QH7",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

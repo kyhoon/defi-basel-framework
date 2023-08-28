@@ -3,5 +3,6 @@
   "symbol": "PKT",
   "itin": "Q4D973D19",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

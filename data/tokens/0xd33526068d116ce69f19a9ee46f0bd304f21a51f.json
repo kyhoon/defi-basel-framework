@@ -3,5 +3,6 @@
   "symbol": "RPL",
   "itin": "F2W89VRP4",
   "decimals": 18,
-  "itc_eep": "EEP22TU03"
+  "itc_eep": "EEP22TU03",
+  "underlying": null
 }

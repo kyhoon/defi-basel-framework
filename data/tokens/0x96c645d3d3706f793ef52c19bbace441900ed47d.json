@@ -3,5 +3,6 @@
   "symbol": "MPS",
   "itin": "D9CV8SYV9",
   "decimals": 0,
-  "itc_eep": "EEP23EQ"
+  "itc_eep": "EEP23EQ",
+  "underlying": null
 }

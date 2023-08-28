@@ -3,5 +3,6 @@
   "symbol": "UFR",
   "itin": "13VBG4Z82",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "GAME",
   "itin": "9V39YFJZ1",
   "decimals": 18,
-  "itc_eep": "EEP21U"
+  "itc_eep": "EEP21U",
+  "underlying": null
 }

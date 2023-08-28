@@ -3,5 +3,6 @@
   "symbol": "MET",
   "itin": "B5H0262P4",
   "decimals": 18,
-  "itc_eep": "EEP21U"
+  "itc_eep": "EEP21U",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "NPXS",
   "itin": "KFK2QK2G7",
   "decimals": 18,
-  "itc_eep": "EEP22TU02"
+  "itc_eep": "EEP22TU02",
+  "underlying": null
 }

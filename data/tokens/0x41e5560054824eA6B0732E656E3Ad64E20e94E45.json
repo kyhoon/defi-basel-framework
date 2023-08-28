@@ -3,5 +3,6 @@
   "symbol": "CVC",
   "itin": "WTH84N5B1",
   "decimals": 8,
-  "itc_eep": "EEP22TU01"
+  "itc_eep": "EEP22TU01",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "AST",
   "itin": "1MXSDV6K9",
   "decimals": 4,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "TEL",
   "itin": "M6BH0J2W8",
   "decimals": 2,
-  "itc_eep": "EEP21UP"
+  "itc_eep": "EEP21UP",
+  "underlying": null
 }

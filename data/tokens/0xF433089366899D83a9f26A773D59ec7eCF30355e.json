@@ -3,5 +3,6 @@
   "symbol": "MTL",
   "itin": "QS91SJD10",
   "decimals": 8,
-  "itc_eep": "EEP21U"
+  "itc_eep": "EEP21U",
+  "underlying": null
 }

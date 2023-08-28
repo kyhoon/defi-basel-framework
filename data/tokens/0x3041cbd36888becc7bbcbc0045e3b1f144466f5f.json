@@ -3,5 +3,6 @@
   "symbol": "UniUSDC/USDT",
   "itin": "GD84918Q0",
   "decimals": 18,
-  "itc_eep": "EEP22TU01"
+  "itc_eep": "EEP22TU01",
+  "underlying": null
 }

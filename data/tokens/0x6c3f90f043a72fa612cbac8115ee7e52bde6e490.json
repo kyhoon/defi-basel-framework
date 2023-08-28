@@ -3,5 +3,6 @@
   "symbol": "abrCVXTC2",
   "itin": "Q4JTD5H21",
   "decimals": 18,
-  "itc_eep": "EEP23ZZ"
+  "itc_eep": "EEP23ZZ",
+  "underlying": null
 }

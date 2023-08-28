@@ -3,5 +3,6 @@
   "symbol": "FXS",
   "itin": "22KQ29XW5",
   "decimals": 18,
-  "itc_eep": "EEP22TU03"
+  "itc_eep": "EEP22TU03",
+  "underlying": null
 }

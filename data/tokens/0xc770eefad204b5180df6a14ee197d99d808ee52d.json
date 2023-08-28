@@ -3,5 +3,6 @@
   "symbol": "FOX",
   "itin": "XYFG9DBW7",
   "decimals": 18,
-  "itc_eep": "EEP22TU03"
+  "itc_eep": "EEP22TU03",
+  "underlying": null
 }

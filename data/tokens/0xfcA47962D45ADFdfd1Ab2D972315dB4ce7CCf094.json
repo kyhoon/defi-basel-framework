@@ -3,5 +3,6 @@
   "symbol": "IXT",
   "itin": "WK7WV3HX1",
   "decimals": 8,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

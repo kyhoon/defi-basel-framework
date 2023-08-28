@@ -3,5 +3,6 @@
   "symbol": "COVAL",
   "itin": "F3645J3Y8",
   "decimals": 8,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "yvCurve-FRAX",
   "itin": "VTCFQPZX1",
   "decimals": 18,
-  "itc_eep": "EEP23DV"
+  "itc_eep": "EEP23DV",
+  "underlying": "0x853d955acef822db058eb8505911ed77f175b99e"
 }

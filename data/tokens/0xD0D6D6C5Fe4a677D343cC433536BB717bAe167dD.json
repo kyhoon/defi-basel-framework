@@ -3,5 +3,6 @@
   "symbol": "ADT",
   "itin": "Q18149G07",
   "decimals": 9,
-  "itc_eep": "EEP22G"
+  "itc_eep": "EEP22G",
+  "underlying": null
 }

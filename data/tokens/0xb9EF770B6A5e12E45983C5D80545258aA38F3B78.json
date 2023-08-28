@@ -3,5 +3,6 @@
   "symbol": "ZCN",
   "itin": "M6XP0PC19",
   "decimals": 10,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

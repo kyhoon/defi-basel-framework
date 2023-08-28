@@ -3,5 +3,6 @@
   "symbol": "BRD",
   "itin": "GYVYW4CY8",
   "decimals": 18,
-  "itc_eep": "EEP22A"
+  "itc_eep": "EEP22A",
+  "underlying": null
 }

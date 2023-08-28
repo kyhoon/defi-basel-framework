@@ -3,5 +3,6 @@
   "symbol": "AID",
   "itin": "13HZRYY70",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

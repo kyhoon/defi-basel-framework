@@ -3,5 +3,6 @@
   "symbol": "REQ",
   "itin": "Q7TTYR9T2",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

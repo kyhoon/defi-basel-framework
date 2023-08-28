@@ -3,5 +3,6 @@
   "symbol": "sKRW",
   "itin": "CPM48HXR7",
   "decimals": 18,
-  "itc_eep": "EEP23DV"
+  "itc_eep": "EEP23DV",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "DLT",
   "itin": "MV976HM87",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "SRM",
   "itin": "VJRGN62M0",
   "decimals": 6,
-  "itc_eep": "EEP22TU03"
+  "itc_eep": "EEP22TU03",
+  "underlying": null
 }

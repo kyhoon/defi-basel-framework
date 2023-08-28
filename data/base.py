@@ -1,6 +1,10 @@
 import os
 
+import numpy as np
+
+# FIXME
 from dotenv import load_dotenv
+from psycopg2.extensions import AsIs, register_adapter
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -28,3 +32,6 @@ engine = create_engine(
 Session = sessionmaker(bind=engine)
 
 Base = declarative_base()
+
+register_adapter(np.int64, AsIs)
+register_adapter(np.float64, AsIs)

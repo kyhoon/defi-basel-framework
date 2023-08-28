@@ -3,5 +3,6 @@
   "symbol": "BAL",
   "itin": "YFG3NX262",
   "decimals": 18,
-  "itc_eep": "EEP22TU03"
+  "itc_eep": "EEP22TU03",
+  "underlying": null
 }

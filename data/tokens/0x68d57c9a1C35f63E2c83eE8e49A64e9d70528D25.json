@@ -3,5 +3,6 @@
   "symbol": "SRN",
   "itin": "9W27TKRJ6",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "STAKE",
   "itin": "7P0D05DK8",
   "decimals": 18,
-  "itc_eep": "EEP22NT02"
+  "itc_eep": "EEP22NT02",
+  "underlying": null
 }

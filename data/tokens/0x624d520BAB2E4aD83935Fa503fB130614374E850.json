@@ -3,5 +3,6 @@
   "symbol": "SSP",
   "itin": "V2RBJ2036",
   "decimals": 4,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

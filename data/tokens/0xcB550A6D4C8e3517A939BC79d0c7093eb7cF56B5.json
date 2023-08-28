@@ -3,5 +3,6 @@
   "symbol": "yvWBTC",
   "itin": "J5G2B5KS9",
   "decimals": 8,
-  "itc_eep": "EEP23DV"
+  "itc_eep": "EEP23DV",
+  "underlying": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
 }

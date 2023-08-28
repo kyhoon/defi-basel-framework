@@ -3,5 +3,6 @@
   "symbol": "sJPY",
   "itin": "QB3DN8SD4",
   "decimals": 18,
-  "itc_eep": "EEP23DV"
+  "itc_eep": "EEP23DV",
+  "underlying": null
 }

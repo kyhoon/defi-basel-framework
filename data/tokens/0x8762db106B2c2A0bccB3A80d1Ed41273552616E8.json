@@ -3,5 +3,6 @@
   "symbol": "RSR",
   "itin": "4J3Q2M564",
   "decimals": 18,
-  "itc_eep": "EEP22TU03"
+  "itc_eep": "EEP22TU03",
+  "underlying": null
 }

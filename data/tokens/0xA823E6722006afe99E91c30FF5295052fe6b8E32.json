@@ -3,5 +3,6 @@
   "symbol": "NEU",
   "itin": "SHP2F7R41",
   "decimals": 18,
-  "itc_eep": "EEP23E"
+  "itc_eep": "EEP23E",
+  "underlying": null
 }

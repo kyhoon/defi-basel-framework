@@ -3,5 +3,6 @@
   "symbol": "sETH",
   "itin": "W5SF9VQ29",
   "decimals": 18,
-  "itc_eep": "EEP23DV"
+  "itc_eep": "EEP23DV",
+  "underlying": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
 }

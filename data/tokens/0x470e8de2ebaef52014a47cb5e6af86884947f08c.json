@@ -3,5 +3,6 @@
   "symbol": "UniETH/FOX",
   "itin": "S4GJX74F3",
   "decimals": 18,
-  "itc_eep": "EEP22TU01"
+  "itc_eep": "EEP22TU01",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "STA",
   "itin": "9CWZ4NRG2",
   "decimals": 18,
-  "itc_eep": "EEP23E"
+  "itc_eep": "EEP23E",
+  "underlying": null
 }

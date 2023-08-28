@@ -3,5 +3,6 @@
   "symbol": "TLM",
   "itin": "RTH9Y2BK1",
   "decimals": 4,
-  "itc_eep": "EEP22NT02"
+  "itc_eep": "EEP22NT02",
+  "underlying": null
 }

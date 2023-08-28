@@ -3,5 +3,6 @@
   "symbol": "VERI",
   "itin": "GGKS6M4M6",
   "decimals": 18,
-  "itc_eep": "EEP22A"
+  "itc_eep": "EEP22A",
+  "underlying": null
 }

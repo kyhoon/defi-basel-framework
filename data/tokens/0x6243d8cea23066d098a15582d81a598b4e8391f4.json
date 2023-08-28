@@ -3,5 +3,6 @@
   "symbol": "FLX",
   "itin": "N0T6Z9PR5",
   "decimals": 18,
-  "itc_eep": "EEP22NT02"
+  "itc_eep": "EEP22NT02",
+  "underlying": null
 }

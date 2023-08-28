@@ -3,5 +3,6 @@
   "symbol": "XAUR",
   "itin": "H7YC86DS5",
   "decimals": 8,
-  "itc_eep": "EEP23A"
+  "itc_eep": "EEP23A",
+  "underlying": null
 }

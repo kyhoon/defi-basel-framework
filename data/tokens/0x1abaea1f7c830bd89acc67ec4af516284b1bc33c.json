@@ -3,5 +3,6 @@
   "symbol": "EUROC",
   "itin": "H0JTT5CJ0",
   "decimals": 6,
-  "itc_eep": "EEP21PP01EUR"
+  "itc_eep": "EEP21PP01EUR",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "SHIB",
   "itin": "9DPB5NBW2",
   "decimals": 18,
-  "itc_eep": "EEP21UP"
+  "itc_eep": "EEP21UP",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "EDG",
   "itin": "JZNSSRX82",
   "decimals": 0,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

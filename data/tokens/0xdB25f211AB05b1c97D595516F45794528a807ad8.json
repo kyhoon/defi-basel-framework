@@ -3,5 +3,6 @@
   "symbol": "EURS",
   "itin": "PCNSZ7W42",
   "decimals": 2,
-  "itc_eep": "EEP21PP01EUR"
+  "itc_eep": "EEP21PP01EUR",
+  "underlying": null
 }

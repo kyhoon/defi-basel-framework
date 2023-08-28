@@ -3,5 +3,6 @@
   "symbol": "NGC",
   "itin": "X0VV9PNK6",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

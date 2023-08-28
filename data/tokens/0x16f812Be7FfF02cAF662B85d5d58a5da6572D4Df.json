@@ -3,5 +3,6 @@
   "symbol": "UTT",
   "itin": "63H5B07J6",
   "decimals": 8,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

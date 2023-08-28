@@ -3,5 +3,6 @@
   "symbol": "IDH",
   "itin": "V595ZPN46",
   "decimals": 6,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "OHM",
   "itin": "DRXJSTCD3",
   "decimals": 9,
-  "itc_eep": "EEP21UP"
+  "itc_eep": "EEP21UP",
+  "underlying": null
 }

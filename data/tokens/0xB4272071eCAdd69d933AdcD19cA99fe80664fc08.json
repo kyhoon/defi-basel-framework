@@ -3,5 +3,6 @@
   "symbol": "XCHF",
   "itin": "4NS2C3NX3",
   "decimals": 18,
-  "itc_eep": "EEP21PP01CHF"
+  "itc_eep": "EEP21PP01CHF",
+  "underlying": null
 }

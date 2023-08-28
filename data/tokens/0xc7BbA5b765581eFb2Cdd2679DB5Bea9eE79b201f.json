@@ -3,5 +3,6 @@
   "symbol": "GEM",
   "itin": "G7V3KWX80",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

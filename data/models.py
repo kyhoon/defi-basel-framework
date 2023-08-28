@@ -1,5 +1,8 @@
-from sqlalchemy import ARRAY, Column, ForeignKey, Integer, String
-from sqlalchemy.orm import relationship
+from typing import Optional
+
+from sqlalchemy import ARRAY, ForeignKey, String
+from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from data.base import Base
 
@@ -7,43 +10,79 @@ from data.base import Base
 class Protocol(Base):
     __tablename__ = "protocols"
 
-    id = Column(String, primary_key=True)
-    rating = Column(String)
-    treasury = Column(ARRAY(String))
-    addresses = Column(ARRAY(String))
+    id: Mapped[str] = mapped_column(primary_key=True)
+    rating: Mapped[str] = mapped_column(String(3))
+    treasury: Mapped[list["Contract"]] = relationship(back_populates="protocol")
+    addresses: Mapped[list["Contract"]] = relationship(
+        back_populates="protocol", overlaps="treasury"
+    )
+    hacks: Mapped[list[JSONB]] = mapped_column(ARRAY(JSONB))
+
+
+class Contract(Base):
+    __tablename__ = "contracts"
+
+    id: Mapped[str] = mapped_column(String(42), primary_key=True)
+    protocol_id: Mapped[str] = mapped_column(ForeignKey("protocols.id"))
+    protocol: Mapped["Protocol"] = relationship()
 
 
 class Token(Base):
     __tablename__ = "tokens"
 
-    id = Column(String, primary_key=True)
-    protocol_id = Column(String, ForeignKey("protocols.id"))
-    protocol = relationship("Protocol")
-    symbol = Column(String)
-    itin = Column(String)
-    itc_eep = Column(String)
-    decimals = Column(Integer)
-    prices = relationship("Price")
+    id: Mapped[str] = mapped_column(String(42), primary_key=True)
+    protocol_id: Mapped[str] = mapped_column(ForeignKey("protocols.id"))
+    protocol: Mapped["Protocol"] = relationship()
+    symbol: Mapped[str]
+    itin: Mapped[str]
+    itc_eep: Mapped[Optional[str]]
+    underlying: Mapped[Optional[str]] = mapped_column(String(42))
+    decimals: Mapped[int]
+    prices: Mapped[list["Price"]] = relationship(back_populates="token")
 
 
-class Price(Base):
-    __tablename__ = "prices"
+class TransferSnapshot(Base):
+    __tablename__ = "transfer_snapshots"
 
-    block_number = Column(Integer, primary_key=True)
-    token_id = Column(String, ForeignKey("tokens.id"), primary_key=True)
-    timestamp = Column(Integer)
-    usd_value = Column(String)
+    contract_id: Mapped[str] = mapped_column(
+        ForeignKey("contracts.id"), primary_key=True
+    )
+    contract: Mapped["Contract"] = relationship()
+    from_timestamp: Mapped[int] = mapped_column(primary_key=True)
+    to_timestamp: Mapped[int] = mapped_column(primary_key=True)
+
+    def __str__(self):
+        return f"{self.contract_id}-{self.from_timestamp}-{self.to_timestamp}"
+
+
+class PriceSnapshot(Base):
+    __tablename__ = "price_snapshots"
+
+    token_id: Mapped[str] = mapped_column(ForeignKey("tokens.id"), primary_key=True)
+    token: Mapped["Token"] = relationship()
+    timestamp: Mapped[int] = mapped_column(primary_key=True)
+
+    def __str__(self):
+        return f"{self.token_id}-{self.timestamp}"
 
 
 class Transfer(Base):
     __tablename__ = "transfers"
 
-    block_hash = Column(String, primary_key=True)
-    tx_hash = Column(String, primary_key=True)
-    log_index = Column(Integer, primary_key=True)
-    block_number = Column(Integer)
-    token_id = Column(String, ForeignKey("tokens.id"))
-    token = relationship("Token")
-    from_address = Column(String)
-    to_address = Column(String)
-    value = Column(String)
+    id: Mapped[str] = mapped_column(primary_key=True)
+    timestamp: Mapped[int]
+    block_number: Mapped[int]
+    token_id: Mapped[str] = mapped_column(ForeignKey("tokens.id"))
+    token: Mapped["Token"] = relationship()
+    from_address: Mapped[str] = mapped_column(String(42))
+    to_address: Mapped[str] = mapped_column(String(42))
+    value: Mapped[str]
+
+
+class Price(Base):
+    __tablename__ = "prices"
+
+    token_id: Mapped[str] = mapped_column(ForeignKey("tokens.id"), primary_key=True)
+    token: Mapped["Token"] = relationship()
+    timestamp: Mapped[int] = mapped_column(primary_key=True)
+    value: Mapped[str]

@@ -3,5 +3,6 @@
   "symbol": "sLINK",
   "itin": "15BSPHXB8",
   "decimals": 18,
-  "itc_eep": "EEP23DV"
+  "itc_eep": "EEP23DV",
+  "underlying": "0x514910771AF9Ca656af840dff83E8264EcF986CA"
 }

@@ -3,5 +3,6 @@
   "symbol": "sAUD",
   "itin": "6RWW97RN4",
   "decimals": 18,
-  "itc_eep": "EEP23DV"
+  "itc_eep": "EEP23DV",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "DGX",
   "itin": "R6TN38JK0",
   "decimals": 9,
-  "itc_eep": "EEP23A"
+  "itc_eep": "EEP23A",
+  "underlying": null
 }

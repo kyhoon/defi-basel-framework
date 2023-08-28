@@ -3,5 +3,6 @@
   "symbol": "CRO",
   "itin": "HGJ9F6Y5F",
   "decimals": 8,
-  "itc_eep": "EEP22TU02"
+  "itc_eep": "EEP22TU02",
+  "underlying": null
 }

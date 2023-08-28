@@ -3,5 +3,6 @@
   "symbol": "GNX",
   "itin": "PWX5PS732",
   "decimals": 9,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

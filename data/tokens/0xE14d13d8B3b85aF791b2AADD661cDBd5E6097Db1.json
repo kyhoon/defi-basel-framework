@@ -3,5 +3,6 @@
   "symbol": "yvYFI",
   "itin": "ZTX4PFPZ8",
   "decimals": 18,
-  "itc_eep": "EEP23DV"
+  "itc_eep": "EEP23DV",
+  "underlying": "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e"
 }

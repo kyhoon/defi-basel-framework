@@ -3,5 +3,6 @@
   "symbol": "VIBE",
   "itin": "R6D06TMQ1",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

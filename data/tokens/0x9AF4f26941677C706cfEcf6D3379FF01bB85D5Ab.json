@@ -3,5 +3,6 @@
   "symbol": "DRT",
   "itin": "G4QDRJPZ2",
   "decimals": 8,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

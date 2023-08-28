@@ -3,5 +3,6 @@
   "symbol": "TMTG",
   "itin": "NB0QBH143",
   "decimals": 18,
-  "itc_eep": "EEP22TU01"
+  "itc_eep": "EEP22TU01",
+  "underlying": null
 }

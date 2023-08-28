@@ -3,5 +3,6 @@
   "symbol": "RLC",
   "itin": "D8455PY79",
   "decimals": 9,
-  "itc_eep": "EEP22TU03"
+  "itc_eep": "EEP22TU03",
+  "underlying": null
 }

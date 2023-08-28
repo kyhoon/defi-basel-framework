@@ -3,5 +3,6 @@
   "symbol": "ENG",
   "itin": "37F71KVS8",
   "decimals": 8,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

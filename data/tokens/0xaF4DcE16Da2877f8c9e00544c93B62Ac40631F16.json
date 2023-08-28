@@ -3,5 +3,6 @@
   "symbol": "MTH",
   "itin": "9DK8CYWD1",
   "decimals": 5,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

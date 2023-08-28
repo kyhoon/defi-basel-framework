@@ -3,5 +3,6 @@
   "symbol": "AMKT",
   "itin": "HJTX5M663",
   "decimals": 18,
-  "itc_eep": "EEP23FD"
+  "itc_eep": "EEP23FD",
+  "underlying": null
 }

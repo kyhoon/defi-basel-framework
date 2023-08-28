@@ -3,5 +3,6 @@
   "symbol": "AXS",
   "itin": "9QJSGQ6H3",
   "decimals": 18,
-  "itc_eep": "EEP22TU03"
+  "itc_eep": "EEP22TU03",
+  "underlying": null
 }

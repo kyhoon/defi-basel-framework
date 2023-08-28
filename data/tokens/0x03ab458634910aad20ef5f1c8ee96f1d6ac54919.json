@@ -3,5 +3,6 @@
   "symbol": "RAI",
   "itin": "PZT580KV3",
   "decimals": 18,
-  "itc_eep": "EEP21UP"
+  "itc_eep": "EEP21UP",
+  "underlying": null
 }

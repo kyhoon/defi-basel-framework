@@ -3,5 +3,6 @@
   "symbol": "aKNC",
   "itin": "P9ZTZDSK0",
   "decimals": 18,
-  "itc_eep": "EEP23DV"
+  "itc_eep": "EEP23DV",
+  "underlying": "0xdd974d5c2e2928dea5f71b9825b8b646686bd200"
 }

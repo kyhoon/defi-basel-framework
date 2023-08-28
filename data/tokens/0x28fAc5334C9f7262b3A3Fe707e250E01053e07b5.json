@@ -3,5 +3,6 @@
   "symbol": "IdleUSDTSafe",
   "itin": "QZBDM9314",
   "decimals": 18,
-  "itc_eep": "EEP23DV"
+  "itc_eep": "EEP23DV",
+  "underlying": "0xdac17f958d2ee523a2206206994597c13d831ec7"
 }

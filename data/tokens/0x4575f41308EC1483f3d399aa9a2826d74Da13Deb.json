@@ -3,5 +3,6 @@
   "symbol": "OXT",
   "itin": "15MRDP268",
   "decimals": 18,
-  "itc_eep": "EEP22TU02"
+  "itc_eep": "EEP22TU02",
+  "underlying": null
 }

@@ -3,5 +3,6 @@
   "symbol": "ORBS",
   "itin": "DP1QC62P7",
   "decimals": 18,
-  "itc_eep": "EEP22TU03"
+  "itc_eep": "EEP22TU03",
+  "underlying": null
 }

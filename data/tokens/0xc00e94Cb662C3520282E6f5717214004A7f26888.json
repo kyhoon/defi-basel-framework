@@ -3,5 +3,6 @@
   "symbol": "COMP",
   "itin": "T2BS7ZST2",
   "decimals": 18,
-  "itc_eep": "EEP22NT02"
+  "itc_eep": "EEP22NT02",
+  "underlying": null
 }

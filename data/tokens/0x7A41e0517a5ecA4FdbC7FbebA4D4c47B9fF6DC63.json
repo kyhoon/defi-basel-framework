@@ -3,5 +3,6 @@
   "symbol": "ZSC",
   "itin": "5CKRWQGQ9",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

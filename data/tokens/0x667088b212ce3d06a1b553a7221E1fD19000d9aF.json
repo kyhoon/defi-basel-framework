@@ -3,5 +3,6 @@
   "symbol": "WINGS",
   "itin": "2QNJH7M96",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

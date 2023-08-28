@@ -3,5 +3,6 @@
   "symbol": "AOA",
   "itin": "6N2YJG1C3",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

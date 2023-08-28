@@ -3,5 +3,6 @@
   "symbol": "MCO",
   "itin": "XM7BNB7X4",
   "decimals": 8,
-  "itc_eep": "EEP22NT01"
+  "itc_eep": "EEP22NT01",
+  "underlying": null
 }

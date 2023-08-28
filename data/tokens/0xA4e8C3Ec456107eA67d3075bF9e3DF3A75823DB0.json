@@ -3,5 +3,6 @@
   "symbol": "LOOM",
   "itin": "7N3BD5WZ6",
   "decimals": 18,
-  "itc_eep": "EEP22S"
+  "itc_eep": "EEP22S",
+  "underlying": null
 }

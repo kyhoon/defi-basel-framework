@@ -3,5 +3,6 @@
   "symbol": "STX",
   "itin": "T49MT8V82",
   "decimals": 18,
-  "itc_eep": "EEP22O"
+  "itc_eep": "EEP22O",
+  "underlying": null
 }
