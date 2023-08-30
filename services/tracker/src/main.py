@@ -2,11 +2,12 @@ import logging
 import os
 
 from apscheduler.schedulers.blocking import BlockingScheduler
-
-from data.base import Base, engine
 from prices import collect_prices
 from snapshots import initialize_snapshots, update_snapshots
 from transfers import collect_transfers
+
+from data.base import Base, Session, engine
+from data.models import PriceSnapshot, TransferSnapshot
 
 # logger
 logger = logging.getLogger(__file__)
@@ -18,11 +19,16 @@ sh = logging.StreamHandler()
 sh.setFormatter(formatter)
 logger.addHandler(sh)
 
-# logging.getLogger("apscheduler").setLevel(logging.ERROR)
+logging.getLogger("apscheduler").setLevel(logging.CRITICAL)
 
 
 def heartbeat():
-    logger.debug("heartbeat")
+    with Session() as session:
+        transfer_snapshots = session.query(TransferSnapshot).count()
+        price_snapshots = session.query(PriceSnapshot).count()
+    logger.debug(
+        f"snapshots left - transfer {transfer_snapshots}, price {price_snapshots}"
+    )
 
 
 def initialize():
@@ -35,8 +41,8 @@ def main():
     logger.info("initializing main loop")
     scheduler = BlockingScheduler(job_defaults={"timezone": "UTC"})
     scheduler.add_job(heartbeat, "interval", minutes=1)
-    scheduler.add_job(collect_prices, "interval", seconds=3, max_instances=8)
-    scheduler.add_job(collect_transfers, "interval", seconds=3, max_instances=8)
+    scheduler.add_job(collect_prices, "interval", seconds=1)
+    scheduler.add_job(collect_transfers, "interval", seconds=1, max_instances=8)
     scheduler.add_job(update_snapshots, "cron", hour=0)
 
     logger.info(

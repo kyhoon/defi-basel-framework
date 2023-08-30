@@ -8,13 +8,13 @@ from sqlalchemy.dialects.postgresql import insert
 
 from data.base import Session
 from data.models import (
-    Contract,
     Price,
     PriceSnapshot,
     Protocol,
     Token,
     Transfer,
     TransferSnapshot,
+    Treasury,
 )
 
 # logger
@@ -28,7 +28,6 @@ sh.setFormatter(formatter)
 logger.addHandler(sh)
 
 # config
-N_JOBS = 2
 MIN_TIMESTAMP = 1534377600  # 2018-Aug-16
 INTERVAL = 60 * 60 * 24  # daily
 OFFSET = 100000
@@ -46,37 +45,43 @@ def update_protocols():
 
             # update protocol info
             protocol_id = filename.split(".")[0]
+            addresses = list(
+                set(addr.lower() for addr in data["treasury"] + data["addresses"])
+            )
             stmt = (
                 insert(Protocol)
                 .values(
                     id=protocol_id,
                     rating=data["rating"],
+                    addresses=addresses,
                     hacks=data["hacks"],
                 )
                 .on_conflict_do_update(
                     index_elements=["id"],
-                    set_={"rating": data["rating"], "hacks": data["hacks"]},
+                    set_={
+                        "rating": data["rating"],
+                        "addresses": addresses,
+                        "hacks": data["hacks"],
+                    },
                 )
             )
             session.execute(stmt)
             session.commit()
 
-            # update contracts
-            addresses = set(
-                addr.lower() for addr in data["treasury"] + data["addresses"]
-            )
-            if len(addresses) == 0:
+            # update treasuries
+            if len(data["treasury"]) == 0:
                 continue
-            contracts = [
+            treasuries = set(addr.lower() for addr in data["treasury"])
+            treasuries = [
                 {
-                    "id": addr.lower(),
+                    "id": addr,
                     "protocol_id": protocol_id,
                 }
-                for addr in addresses
+                for addr in treasuries
             ]
             stmt = (
-                insert(Contract)
-                .values(contracts)
+                insert(Treasury)
+                .values(treasuries)
                 .on_conflict_do_update(
                     index_elements=["id"],
                     set_={"protocol_id": protocol_id},
@@ -142,7 +147,7 @@ def check_transfers(timestamps):
     logger.debug(f"checking transfers for {len(timestamps)} timestamps")
 
     with Session() as session:
-        contracts = session.query(Contract).all()
+        treasuries = session.query(Treasury).all()
         idx = 1
         snapshots = []
         while idx < len(timestamps):
@@ -153,15 +158,15 @@ def check_transfers(timestamps):
             tx_ts = session.query(Transfer).filter(
                 Transfer.timestamp >= start, Transfer.timestamp < end
             )
-            for contract in contracts:
+            for treasury in treasuries:
                 tx_cnt = tx_ts.filter(
-                    (Transfer.from_address == contract.id)
-                    | (Transfer.to_address == contract.id)
+                    (Transfer.from_address == treasury.id)
+                    | (Transfer.to_address == treasury.id)
                 ).first()
                 if tx_cnt is None:
                     snapshots.append(
                         {
-                            "contract_id": contract.id,
+                            "treasury_id": treasury.id,
                             "from_timestamp": start,
                             "to_timestamp": end,
                         }
@@ -174,7 +179,7 @@ def check_transfers(timestamps):
                     insert(TransferSnapshot)
                     .values(snapshots)
                     .on_conflict_do_nothing(
-                        index_elements=["contract_id", "from_timestamp", "to_timestamp"]
+                        index_elements=["treasury_id", "from_timestamp", "to_timestamp"]
                     )
                 )
                 session.execute(stmt)
@@ -189,7 +194,7 @@ def check_transfers(timestamps):
                 insert(TransferSnapshot)
                 .values(snapshots)
                 .on_conflict_do_nothing(
-                    index_elements=["contract_id", "from_timestamp", "to_timestamp"]
+                    index_elements=["treasury_id", "from_timestamp", "to_timestamp"]
                 )
             )
             session.execute(stmt)
@@ -251,15 +256,15 @@ def init_transfers(timestamps):
     logger.debug(f"initializing transfers for {len(timestamps)} timestamps")
 
     with Session() as session:
-        contracts = session.query(Contract).all()
+        treasuries = session.query(Treasury).all()
 
         snapshots = [
             {
-                "contract_id": contract.id,
+                "treasury_id": treasury.id,
                 "from_timestamp": timestamps[0],
                 "to_timestamp": timestamps[-1],
             }
-            for contract in contracts
+            for treasury in treasuries
         ]
 
         logger.debug(
@@ -269,7 +274,7 @@ def init_transfers(timestamps):
             insert(TransferSnapshot)
             .values(snapshots)
             .on_conflict_do_nothing(
-                index_elements=["contract_id", "from_timestamp", "to_timestamp"]
+                index_elements=["treasury_id", "from_timestamp", "to_timestamp"]
             )
         )
         session.execute(stmt)
@@ -329,7 +334,7 @@ def initialize_snapshots():
     update_tokens()
     timestamps = create_timestamps()
 
-    Parallel(backend="loky", n_jobs=N_JOBS)(
+    Parallel(backend="loky", n_jobs=2)(
         [
             delayed(init_transfers)(timestamps),
             delayed(init_prices)(timestamps),
@@ -345,7 +350,7 @@ def update_snapshots():
     update_tokens()
     timestamps = create_timestamps()
 
-    Parallel(backend="loky", n_jobs=N_JOBS)(
+    Parallel(backend="loky", n_jobs=2)(
         [
             delayed(check_transfers)(timestamps),
             delayed(check_prices)(timestamps),

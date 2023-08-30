@@ -5,20 +5,15 @@ import time
 
 import requests
 from sqlalchemy import delete
-from sqlalchemy.orm import make_transient
 from sqlalchemy.dialects.postgresql import insert
+from sqlalchemy.orm import make_transient
 
 from data.base import Session
 from data.models import Token, Transfer, TransferSnapshot
 
-# FIXME
-from dotenv import load_dotenv
-
-load_dotenv()
-
 # logger
 logger = logging.getLogger(__file__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 formatter = logging.Formatter(
     "%(asctime)s - %(levelname)s - %(filename)s:%(lineno)s - %(message)s"
 )
@@ -80,16 +75,16 @@ def _collect_transfers():
         snapshot = (
             session.query(TransferSnapshot)
             .order_by(
-                TransferSnapshot.contract_id,
+                TransferSnapshot.treasury_id,
                 TransferSnapshot.from_timestamp,
                 TransferSnapshot.to_timestamp,
             )
             .first()
         )
         # remove snapshot
-        logger.debug(f"collecting txs for snapshot {snapshot}")
+        logger.info(f"collecting txs for snapshot {snapshot}")
         stmt = delete(TransferSnapshot).filter(
-            TransferSnapshot.contract_id == snapshot.contract_id,
+            TransferSnapshot.treasury_id == snapshot.treasury_id,
             TransferSnapshot.from_timestamp == snapshot.from_timestamp,
             TransferSnapshot.to_timestamp == snapshot.to_timestamp,
         )
@@ -103,7 +98,7 @@ def _collect_transfers():
             to_block = get_block_number(snapshot.to_timestamp)
             is_last_page = False
             while not is_last_page:
-                data = get_transactions(snapshot.contract_id, from_block, to_block)
+                data = get_transactions(snapshot.treasury_id, from_block, to_block)
                 is_last_page = len(data) < 10000
                 if not is_last_page:
                     from_block = data[-1]["blockNumber"]
@@ -156,5 +151,4 @@ def collect_transfers():
     if rows == 0:
         return
 
-    logger.info("collecting transfers from snapshots")
     _collect_transfers()

@@ -1,10 +1,10 @@
 import json
 import logging
 import time
+from joblib import Parallel, delayed
 
 import requests
 from sqlalchemy import delete
-from sqlalchemy.orm import make_transient
 from sqlalchemy.dialects.postgresql import insert
 
 from data.base import Session
@@ -12,7 +12,7 @@ from data.models import Price, PriceSnapshot
 
 # logger
 logger = logging.getLogger(__file__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 formatter = logging.Formatter(
     "%(asctime)s - %(levelname)s - %(filename)s:%(lineno)s - %(message)s"
 )
@@ -41,23 +41,16 @@ def query_defillama(endpoint):
     raise ConnectionError("could not fetch data from DefiLlama")
 
 
-def _collect_prices():
+def _collect_prices(page):
     with Session() as session:
         snapshots = (
             session.query(PriceSnapshot)
             .order_by(PriceSnapshot.token_id, PriceSnapshot.timestamp)
+            .offset(page * OFFSET)
             .limit(OFFSET)
             .all()
         )
-        # remove snapshots
-        logger.debug(f"collecting prices for snapshots {snapshots[0]}-{snapshots[-1]}")
-        for snapshot in snapshots:
-            stmt = delete(PriceSnapshot).filter(
-                PriceSnapshot.token_id == snapshot.token_id,
-                PriceSnapshot.timestamp == snapshot.timestamp,
-            )
-            session.execute(stmt)
-            session.commit()
+    logger.info(f"collecting prices for snapshots {snapshots[0]}-{snapshots[-1]}")
 
     with Session() as session:
         # collect snapshots
@@ -97,15 +90,20 @@ def _collect_prices():
                 session.execute(stmt)
                 session.commit()
 
-        # add snapshots back in
         except ConnectionError:
-            for snapshot in snapshots:
-                make_transient(snapshot)
-                session.add(snapshot)
-            session.commit()
             logger.error(
                 f"skipping snapshots {snapshots[0]}-{snapshots[-1]} due to connection error"
             )
+            return
+
+        # remove snapshots
+        for snapshot in snapshots:
+            stmt = delete(PriceSnapshot).filter(
+                PriceSnapshot.token_id == snapshot.token_id,
+                PriceSnapshot.timestamp == snapshot.timestamp,
+            )
+            session.execute(stmt)
+            session.commit()
 
 
 def collect_prices():
@@ -114,5 +112,8 @@ def collect_prices():
     if rows == 0:
         return
 
-    logger.info("collecting prices from snapshots")
-    _collect_prices()
+    pages = rows // OFFSET + (rows % OFFSET > 0)
+    pages = min(pages, 8)
+    Parallel(backend="loky", n_jobs=pages)(
+        [delayed(_collect_prices)(page) for page in range(pages)]
+    )
