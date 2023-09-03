@@ -2,12 +2,13 @@ import logging
 import os
 
 from apscheduler.schedulers.blocking import BlockingScheduler
+
+from basel_framework import calculate_car
+from data.base import Base, Session, engine
+from data.models import Assets, PriceSnapshot, Protocol, Token, TransferSnapshot
 from prices import collect_prices
 from snapshots import initialize_snapshots, update_snapshots
 from transfers import collect_transfers
-
-from data.base import Base, Session, engine
-from data.models import PriceSnapshot, TransferSnapshot
 
 # logger
 logger = logging.getLogger(__file__)
@@ -24,8 +25,19 @@ logging.getLogger("apscheduler").setLevel(logging.CRITICAL)
 
 def heartbeat():
     with Session() as session:
+        protocols = len(
+            [
+                protocol
+                for protocol in session.query(Protocol).all()
+                if len(protocol.treasuries) > 0
+            ]
+        )
+        tokens = session.query(Token).count()
+        assets = session.query(Assets).count()
         transfer_snapshots = session.query(TransferSnapshot).count()
         price_snapshots = session.query(PriceSnapshot).count()
+
+    logger.debug(f"data collected - protocol {protocols}, token {tokens}, CAR {assets}")
     logger.debug(
         f"snapshots left - transfer {transfer_snapshots}, price {price_snapshots}"
     )
@@ -44,6 +56,7 @@ def main():
     scheduler.add_job(collect_prices, "interval", seconds=1)
     scheduler.add_job(collect_transfers, "interval", seconds=1, max_instances=8)
     scheduler.add_job(update_snapshots, "cron", hour=0)
+    scheduler.add_job(calculate_car, "cron", hour=1)
 
     logger.info(
         "running main loop, press Ctrl+{} to exit".format(

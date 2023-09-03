@@ -104,6 +104,8 @@ def update_tokens():
                 data = json.load(f)
 
             # update token info
+            if data["underlying"] is not None:
+                data["underlying"] = data["underlying"].lower()
             stmt = (
                 insert(Token)
                 .values(

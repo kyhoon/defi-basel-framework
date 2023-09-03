@@ -1,9 +1,9 @@
 import json
 import logging
 import time
-from joblib import Parallel, delayed
 
 import requests
+from joblib import Parallel, delayed
 from sqlalchemy import delete
 from sqlalchemy.dialects.postgresql import insert
 
