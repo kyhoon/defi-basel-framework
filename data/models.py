@@ -12,15 +12,13 @@ class Protocol(Base):
 
     id: Mapped[str] = mapped_column(primary_key=True)
     rating: Mapped[str] = mapped_column(String(3))
-    treasury: Mapped[list["Contract"]] = relationship(back_populates="protocol")
-    addresses: Mapped[list["Contract"]] = relationship(
-        back_populates="protocol", overlaps="treasury"
-    )
+    treasuries: Mapped[list["Treasury"]] = relationship(back_populates="protocol")
+    addresses: Mapped[list[str]] = mapped_column(ARRAY(String(42)))
     hacks: Mapped[list[JSONB]] = mapped_column(ARRAY(JSONB))
 
 
-class Contract(Base):
-    __tablename__ = "contracts"
+class Treasury(Base):
+    __tablename__ = "treasuries"
 
     id: Mapped[str] = mapped_column(String(42), primary_key=True)
     protocol_id: Mapped[str] = mapped_column(ForeignKey("protocols.id"))
@@ -44,15 +42,15 @@ class Token(Base):
 class TransferSnapshot(Base):
     __tablename__ = "transfer_snapshots"
 
-    contract_id: Mapped[str] = mapped_column(
-        ForeignKey("contracts.id"), primary_key=True
+    treasury_id: Mapped[str] = mapped_column(
+        ForeignKey("treasuries.id"), primary_key=True
     )
-    contract: Mapped["Contract"] = relationship()
+    treasury: Mapped["Treasury"] = relationship()
     from_timestamp: Mapped[int] = mapped_column(primary_key=True)
     to_timestamp: Mapped[int] = mapped_column(primary_key=True)
 
     def __str__(self):
-        return f"{self.contract_id}-{self.from_timestamp}-{self.to_timestamp}"
+        return f"{self.treasury_id}-{self.from_timestamp}-{self.to_timestamp}"
 
 
 class PriceSnapshot(Base):
@@ -86,3 +84,19 @@ class Price(Base):
     token: Mapped["Token"] = relationship()
     timestamp: Mapped[int] = mapped_column(primary_key=True)
     value: Mapped[str]
+
+
+class Assets(Base):
+    __tablename__ = "assets"
+
+    protocol_id: Mapped[str] = mapped_column(
+        ForeignKey("protocols.id"), primary_key=True
+    )
+    protocol: Mapped["Protocol"] = relationship()
+    timestamp: Mapped[int] = mapped_column(primary_key=True)
+    cet1: Mapped[str]
+    credit_rwa: Mapped[str]
+    market_rwa: Mapped[str]
+    operational_rwa: Mapped[str]
+    rwa: Mapped[str]
+    car: Mapped[float]

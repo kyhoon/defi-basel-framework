@@ -3,6 +3,6 @@
   "symbol": "WETH",
   "itin": "N119KTCB8",
   "decimals": 18,
-  "itc_eep": null,
+  "itc_eep": "EEP22TU01",
   "underlying": null
 }
