@@ -1,7 +1,6 @@
 import os
 
 import numpy as np
-
 # FIXME
 from dotenv import load_dotenv
 from psycopg2.extensions import AsIs, register_adapter

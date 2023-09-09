@@ -27,9 +27,15 @@ services:
     environment:
       <<: *postgres-envs
       ETHERSCAN_TOKEN: ${ETHERSCAN_TOKEN}
+    depends_on:
+      - postgres
 
   server:
     build:
       context: .
       dockerfile: ./services/server/Dockerfile
     environment: *postgres-envs
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres

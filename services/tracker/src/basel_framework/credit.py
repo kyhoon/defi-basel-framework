@@ -3,8 +3,9 @@ from decimal import Decimal
 
 import numpy as np
 import pandas as pd
+from basel_framework.utils import (get_daily_balance, get_tokens,
+                                   get_usd_balance)
 
-from basel_framework.utils import get_daily_balance, get_tokens, get_usd_balance
 from data.base import Session
 from data.models import Token
 
@@ -85,13 +86,15 @@ def calculate_ccr_rwa(protocol):
         addon = calculate_addons(usd_balance)
 
         V = usd_balance.sum(axis=1)
+        C = V * Decimal(0.0)  # haircut value
+
         multiplier = 0.05 + (1 - 0.05) * np.exp(
-            V.astype(float) / (2 * (1 - 0.05) * addon.astype(float))
+            (V - C).astype(float) / (2 * (1 - 0.05) * addon.astype(float))
         )
         multiplier = multiplier.clip(upper=1.0).fillna(0.0).apply(Decimal)
         pfe = multiplier * addon
 
-        ead = Decimal(1.4) * (V + pfe)
+        ead = Decimal(1.4) * (V - C + pfe)
 
         # apply risk weight
         if protocol.rating in ["AAA", "AA"]:

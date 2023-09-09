@@ -2,13 +2,14 @@ import logging
 import os
 
 from apscheduler.schedulers.blocking import BlockingScheduler
-
 from basel_framework import calculate_car
-from data.base import Base, Session, engine
-from data.models import Assets, PriceSnapshot, Protocol, Token, TransferSnapshot
 from prices import collect_prices
 from snapshots import initialize_snapshots, update_snapshots
 from transfers import collect_transfers
+
+from data.base import Base, Session, engine
+from data.models import (Assets, PriceSnapshot, Protocol, Token,
+                         TransferSnapshot)
 
 # logger
 logger = logging.getLogger(__file__)
@@ -71,5 +72,6 @@ def main():
 
 
 if __name__ == "__main__":
-    initialize()
-    main()
+    # initialize()
+    # main()
+    calculate_car()

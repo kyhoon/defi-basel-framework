@@ -7,15 +7,8 @@ from joblib import Parallel, delayed
 from sqlalchemy.dialects.postgresql import insert
 
 from data.base import Session
-from data.models import (
-    Price,
-    PriceSnapshot,
-    Protocol,
-    Token,
-    Transfer,
-    TransferSnapshot,
-    Treasury,
-)
+from data.models import (Price, PriceSnapshot, Protocol, Token, Transfer,
+                         TransferSnapshot, Treasury)
 
 # logger
 logger = logging.getLogger(__file__)

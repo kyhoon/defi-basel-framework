@@ -17,8 +17,6 @@ sh = logging.StreamHandler()
 sh.setFormatter(formatter)
 logger.addHandler(sh)
 
-# config
-OFFSET = 100000
 
 token_map = {
     "cash": [

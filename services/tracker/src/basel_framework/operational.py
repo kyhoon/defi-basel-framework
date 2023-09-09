@@ -3,8 +3,8 @@ from decimal import Decimal
 
 import numpy as np
 import pandas as pd
-
 from basel_framework.utils import get_daily_balance, get_tokens, get_usd_prices
+
 from data.base import Session
 from data.models import Protocol, Token, Transfer
 
@@ -153,7 +153,7 @@ def calculate_operational_rwa(protocol):
         hacks.date = pd.to_datetime(hacks.date)
         hacks.set_index("date", inplace=True)
         hacks = hacks.reindex(bic.index).fillna(0.0)
-        yearly = hacks.rolling(WINDOW).sum()
+        yearly = hacks.rolling(WINDOW, min_periods=1).sum()
         lc = 15 * yearly.amount
         ilm = np.log(np.exp(1) - 1 + (lc / bic.astype(float)) ** 0.8).apply(Decimal)
         ilm.replace([np.inf, -np.inf], np.nan, inplace=True)

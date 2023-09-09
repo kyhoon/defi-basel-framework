@@ -1,9 +1,5 @@
 FROM python:3.11
 
-RUN apt-get update -qq && apt-get install -y --no-install-recommends \
-    r-base \
-    r-base-dev
-
 COPY ./services/tracker/requirements.txt .
 RUN pip install -r ./requirements.txt
 

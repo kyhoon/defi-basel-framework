@@ -2,13 +2,13 @@ import logging
 from decimal import Decimal
 
 import pandas as pd
-from joblib import Parallel, delayed
-from sqlalchemy.dialects.postgresql import insert
-
 from basel_framework.cet1 import calculate_cet1
 from basel_framework.credit import calculate_ccr_rwa
 from basel_framework.market import calculate_market_rwa
 from basel_framework.operational import calculate_operational_rwa
+from joblib import Parallel, delayed
+from sqlalchemy.dialects.postgresql import insert
+
 from data.base import Session
 from data.models import Assets, Protocol
 
