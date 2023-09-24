@@ -1,8 +1,7 @@
 import logging
 from decimal import Decimal
 
-from basel_framework.utils import (get_daily_balance, get_tokens,
-                                   get_usd_balance)
+from basel_framework.utils import get_daily_balance, get_tokens, get_usd_balance
 
 from data.base import Session
 from data.models import Token

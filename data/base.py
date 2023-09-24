@@ -1,14 +1,10 @@
 import os
 
 import numpy as np
-# FIXME
-from dotenv import load_dotenv
 from psycopg2.extensions import AsIs, register_adapter
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-
-load_dotenv()
 
 username = os.getenv("POSTGRES_USER")
 password = os.getenv("POSTGRES_PASSWORD")

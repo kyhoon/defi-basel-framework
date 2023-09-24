@@ -3,8 +3,7 @@ from decimal import Decimal
 
 import numpy as np
 import pandas as pd
-from basel_framework.utils import (get_daily_balance, get_tokens,
-                                   get_usd_balance)
+from basel_framework.utils import get_daily_balance, get_tokens, get_usd_balance
 
 from data.base import Session
 from data.models import Token

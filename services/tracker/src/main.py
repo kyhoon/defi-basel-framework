@@ -8,8 +8,7 @@ from snapshots import initialize_snapshots, update_snapshots
 from transfers import collect_transfers
 
 from data.base import Base, Session, engine
-from data.models import (Assets, PriceSnapshot, Protocol, Token,
-                         TransferSnapshot)
+from data.models import Assets, PriceSnapshot, Protocol, Token, TransferSnapshot
 
 # logger
 logger = logging.getLogger(__file__)
@@ -72,6 +71,5 @@ def main():
 
 
 if __name__ == "__main__":
-    # initialize()
-    # main()
-    calculate_car()
+    initialize()
+    main()
