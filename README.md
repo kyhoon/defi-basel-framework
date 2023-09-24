@@ -27,7 +27,7 @@ POSTGRES_PORT=[Port number for PostgreSQL]
 where you need to replace the square brackets "[ ]" with the actual variables, e.g., `POSTGRES_PORT=5432`.  
 
 The Etherscan API key is not mandatory for running this code base, but Etherscan applies stricter rate limits when not including the API key in the queries.
-So either you could [create the key for free](https://docs.etherscan.io/getting-started/viewing-api-usage-statistics) or increase [the backoff parameters in the tracker](services/tracker/src/transfers.py)
+So either you could [create the key for free](https://docs.etherscan.io/getting-started/viewing-api-usage-statistics) or increase [the backoff parameters in the tracker](services/tracker/src/transfers.py#L25-L26)
 
 You can copy paste the `.env.example` file and use this as a template.
 
